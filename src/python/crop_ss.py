@@ -56,6 +56,39 @@ def crop_ss_2(path, kingdom, rank):
     helps_snap.save(path + "\\helps_snap.png")
     preprocess(path , "\\helps_snap.png", False)
 
+def crop_ss_power(path, kingdom, rank):
+    rank_str = "\\rank "
+    png_str = ".png"
+    kingdom = "\\" + kingdom
+    r = "\\" + str(rank) + png_str
+    path += kingdom
+    image = Image.open(path + r)
+
+    rank_plus_1 = image.crop((1340, 320, 1560, 380))
+    rank_plus_1.save(path + rank_str + str((rank-1)*6 + 1) + png_str)
+    preprocess(path , rank_str + str((rank-1)*6 + 1) + png_str, False)
+
+    rank_plus_2 = image.crop((1340, 430, 1560, 490))
+    rank_plus_2.save(path + rank_str + str((rank-1)*6 + 2) + png_str)
+    preprocess(path , rank_str + str((rank-1)*6 + 2) + png_str, False)
+
+    rank_plus_3 = image.crop((1340, 540, 1560, 600))
+    rank_plus_3.save(path + rank_str + str((rank-1)*6 + 3) + png_str)
+    preprocess(path , rank_str + str((rank-1)*6 + 3) + png_str, False)
+
+    rank_plus_4 = image.crop((1340, 660, 1560, 710))
+    rank_plus_4.save(path + rank_str + str((rank-1)*6 + 4) + png_str)
+    preprocess(path , rank_str + str((rank-1)*6 + 4) + png_str, False)
+
+    rank_plus_5 = image.crop((1340, 770, 1560, 830))
+    rank_plus_5.save(path + rank_str + str((rank-1)*6 + 5) + png_str)
+    preprocess(path , rank_str + str((rank-1)*6 + 5) + png_str, False)
+
+    rank_plus_6 = image.crop((1340, 880, 1560, 940))
+    rank_plus_6.save(path + rank_str + str((rank)*6) + png_str)
+    preprocess(path , rank_str + str((rank)*6) + png_str, False)
+
+
 def preprocess(path ,name, invert):
     # Grayscale, Gaussian blur, Otsu's threshold
     image = cv2.imread(path + name)

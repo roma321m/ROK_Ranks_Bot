@@ -69,4 +69,7 @@ def screenshot(win, path, kingdom, rank, name):
     win32gui.ReleaseDC(hwnd, hwndDC)
 
     if result == 1:
-        im.save(path + "\\" + kingdom + "\\" + str(rank) + name + ".png")
+        if rank == "power":
+            im.save(path + "\\" + kingdom  + name + ".png")
+        else:
+            im.save(path + "\\" + kingdom + "\\" + str(rank) + name + ".png")
