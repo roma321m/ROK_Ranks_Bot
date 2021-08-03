@@ -42,8 +42,8 @@ public class Main {
 					PATH_OF_PIC + "\\Excel files\\" + kingdom.getNumber() + " " + kingdom.getDate() + ".xlsx", kingdom);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		**/
+		}**/
+		
 		System.out.println(kingdom);
 	}
 
