@@ -32,9 +32,9 @@ public class Main {
 		Kingdom kingdom = new Kingdom(KINGDOM_NUMBER);
 
 		String kingdomNumber = kingdomNumber(kingdom);
-		/**
-		createDirForKingdomExcel(kingdom);
 		
+		createDirForKingdomExcel(kingdom);
+		/**
 		createDirForPowerOnly(kingdom);
 
 		kingdom.setPower(convertToPower(kingdomNumber, 300));
@@ -45,7 +45,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		**/
 		createDirForAllStats(kingdom);
 
 		for (int rank = 1; rank < 301; rank++) {
@@ -59,8 +59,8 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		System.out.println(kingdom);
-		**/
+		//System.out.println(kingdom);
+		
 	}
 
 	public static String kingdomNumber(Kingdom kingdom) {

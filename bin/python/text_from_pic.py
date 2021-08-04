@@ -28,63 +28,63 @@ def main(argv):
     try:
         image = cv2.imread(path + barbs)
         text_barbs = pytesseract.image_to_string(image)
-        if text_barbs == None:
-            text_barbs = "0"
+        if text_barbs == "":
+            text_barbs = "0\n "
 
         image2 = cv2.imread(path + deads)
         text_deads = pytesseract.image_to_string(image2)
-        if text_deads == None:
-            text_deads = "0"
+        if text_deads == "":
+            text_deads = "0\n "
 
         image = cv2.imread(path + helps)
         text_helps = pytesseract.image_to_string(image)
-        if text_helps == None:
-            text_helps = "0"
+        if text_helps == "":
+            text_helps = "0\n "
 
         image = cv2.imread(path + gov_id)
         text_gov_id = pytesseract.image_to_string(image)
-        if text_gov_id == None:
-            text_gov_id = "0"
+        if text_gov_id == "":
+            text_gov_id = "0\n "
 
         image = cv2.imread(path + power)
         text_power = pytesseract.image_to_string(image)
-        if text_power == None:
-            text_power = "0"
+        if text_power == "":
+            text_power = "0\n "
 
         image = cv2.imread(path + rss_a)
         text_rss_a = pytesseract.image_to_string(image)
-        if text_rss_a == None:
-            text_rss_a = "0"
+        if text_rss_a == "":
+            text_rss_a = "0\n "
 
         image = cv2.imread(path + rss_g)
         text_rss_g = pytesseract.image_to_string(image)
-        if text_rss_g == None:
-            text_rss_g = "0"
+        if text_rss_g == "":
+            text_rss_g = "0\n "
 
         image = cv2.imread(path + t1)
         text_t1 = pytesseract.image_to_string(image)
-        if text_t1 == None:
-            text_t1 = "0"
+        if text_t1 == "":
+            text_t1 = "0\n "
 
         image = cv2.imread(path + t2)
         text_t2 = pytesseract.image_to_string(image)
-        if text_t2 == None:
-            text_t2 = "0"
+        if text_t2 == "":
+            text_t2 = "0\n "
 
         image = cv2.imread(path + t3)
         text_t3 = pytesseract.image_to_string(image)
-        if text_t3 == None:
-            text_t3 = "0"
+        if text_t3 == "":
+            text_t3 = "0\n "
 
         image = cv2.imread(path + t4)
         text_t4 = pytesseract.image_to_string(image)
-        if text_t4 == None:
-            text_t4 = "0"
+        if text_t4 == "":
+            text_t4 = "0\n "
 
         image = cv2.imread(path + t5)
         text_t5 = pytesseract.image_to_string(image)
-        if text_t5 == None:
-            text_t5 = "0"
+        if text_t5 == "":
+            text_t5 = "0\n "
 
         text = text_barbs + text_deads + text_helps + text_gov_id + text_power + text_rss_a + text_rss_g + text_t1 + text_t2 + text_t3 + text_t4 + text_t5
         print (text)
