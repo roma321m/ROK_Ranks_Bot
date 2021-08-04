@@ -250,7 +250,7 @@ def loop_on_power_ranks(win, path, kingdom):
         if rank%2 == 1:
             scroll(1400, 880, 1400, 183)
         else:
-            scroll(1400, 880, 1400, 181)
+            scroll(1400, 880, 1400, 182)
         time.sleep(.2)
         crop_ss_power(path, kingdom, rank)
 
@@ -259,7 +259,7 @@ def main():
     #start_game()
     #open_ranks()
     #loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  30-07-2021")
-    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  03-08-2021")
+    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  04-08-2021")
  
 if __name__ == '__main__':
     main()

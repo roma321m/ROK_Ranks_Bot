@@ -3,6 +3,7 @@ package model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 public class Kingdom {
 
@@ -10,18 +11,28 @@ public class Kingdom {
 	private Date date;
 	private SimpleDateFormat formatter;
 	private ArrayList<Player> players;
+	private Map<String, String> power;
 
 	public Kingdom(int number) {
 		setNumber(number);
 		setFormatter();
 		setDate();
 		setPlayers();
+		setPower(null);
+	}
+
+	public void setPower(Map<String, String> power) {
+		this.power = power;
 	}
 
 	public void addPlayer(Player p) {
 		if (p != null) {
 			players.add(p);
 		}
+	}
+	
+	public Map<String, String> getPower(){
+		return power;
 	}
 
 	public int getNumber() {

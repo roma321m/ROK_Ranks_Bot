@@ -6,20 +6,20 @@ public class Player {
 	private long id, power, killPoints, t1, t2, t3, t4, t5, deaths, rss_a, rss_g, helps, barbs;
 
 	public Player() {
-		setId("");
+		setId("0");
 		setName("");
-		setPower("");
-		setT1("");
-		setT2("");
-		setT3("");
-		setT4("");
-		setT5("");
+		setPower("0");
+		setT1("0");
+		setT2("0");
+		setT3("0");
+		setT4("0");
+		setT5("0");
 		setKillPoints();
-		setDeaths("");
-		setRss_a("");
-		setRss_g("");
-		setHelps("");
-		setBarbs("");
+		setDeaths("0");
+		setRss_a("0");
+		setRss_g("0");
+		setHelps("0");
+		setBarbs("0");
 	}
 
 	private long strToInt(String str) {

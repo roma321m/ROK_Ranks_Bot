@@ -11,6 +11,7 @@ from screen_images import screen_grab
 from screen_images import screenshot
 from crop_ss import crop_ss_1
 from crop_ss import crop_ss_2
+from crop_ss import crop_ss_power
 
 PATH = "E:\\rok bot data\\bot templates\\"
 def start_game():
@@ -244,34 +245,21 @@ def loop_on_players_in_ranks(win, path, kingdom):
 
 
 def loop_on_power_ranks(win, path, kingdom):
-    for rank in range(1,56):
+    for rank in range(1, 51): # (1,51) = top 300 (1 pic = 6 players)
         screenshot(win, path, kingdom, "power", "\\"+str(rank))
-        scroll(1400, 880, 1400, 240)
-        time.sleep(.2)
-    '''
-    govProfile = cv2.imread(PATH + 'governor profile.png')
-    killPoints  = cv2.imread(PATH + 'kill points.png')
-    individualPowerPic = cv2.imread(PATH + 'individual power.png')
-    errorPic = cv2.imread(PATH + 'login error.png')
-    moreInfo = cv2.imread(PATH + 'more info.png')
-
-    rank_y = 240
-    rank = 1
-    while rank <= 1:
-        if rank < 5:
-            rank_y += 112
+        if rank%2 == 1:
+            scroll(1400, 880, 1400, 183)
         else:
-            rank_y = 715
-
-        print("rank: " + str(rank) + "\n")
-    '''
+            scroll(1400, 880, 1400, 182)
+        time.sleep(.2)
+        crop_ss_power(path, kingdom, rank)
 
 
 def main():
     #start_game()
     #open_ranks()
     #loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  30-07-2021")
-    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  30-07-2021")
+    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  04-08-2021")
  
 if __name__ == '__main__':
     main()
