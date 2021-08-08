@@ -20,7 +20,7 @@ def start_game():
     profilePic = cv2.imread(PATH + 'profile.png')
     errorPic = cv2.imread(PATH + 'login error.png')
     if check_image_match(screenshot, gameLogoPic, .6) != (0, 0):
-        mouse_pos((1075, 190))
+        mouse_pos(1075, 190)
         left_click()
         time.sleep(10)
     
@@ -34,7 +34,7 @@ def start_game():
             break
         if x2 != 0 or y2 != 0:
             print("conffirm found\n")
-            mouse_pos((950, 690))
+            mouse_pos(950, 690)
             left_click()
             time.sleep(15)
 
@@ -42,7 +42,7 @@ def start_game():
 def open_ranks():
     # click the profile picture
     time.sleep(1)
-    mouse_pos((120, 90))
+    mouse_pos(120, 90)
     left_click()
     govProfile = cv2.imread(PATH + 'governor profile.png')
     ranksPic = cv2.imread(PATH + 'rankings.png')
@@ -59,7 +59,7 @@ def open_ranks():
             break
     
     # click rankings
-    mouse_pos((670, 770))
+    mouse_pos(670, 770)
     left_click()
 
     # wait for rankings screen
@@ -72,7 +72,7 @@ def open_ranks():
             break
     
     # click individual power ranks
-    mouse_pos((500, 610))
+    mouse_pos(500, 610)
     left_click()
 
     # wait for rankings screen
@@ -100,7 +100,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
 
     rank_y = 240
     rank = 1
-    while rank <= 1:
+    while rank <= 300:
         if rank < 5:
             rank_y += 112
         else:
@@ -125,7 +125,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
         if count == 100:
             break
         # click on the player in rank position
-        mouse_pos((950, rank_y))
+        mouse_pos(950, rank_y)
         left_click()
 
         # check if gov profile screen on
@@ -143,7 +143,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
                 break
             count += 1
         if count == 100:
-            mouse_pos((950, 830)) # point of the next rank
+            mouse_pos(950, 830) # point of the next rank
             left_click()
             count = 0
             while(count < 100): # 20 sec max waiting before break
@@ -162,7 +162,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
                 print("error on opening a gov profile")
                 break
         # click kill points
-        mouse_pos((1295, 430))
+        mouse_pos(1295, 430)
         left_click()
 
         # check kill points screen on
@@ -184,7 +184,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
         # run take ss 1 ########################
         screenshot(win, path, kingdom, rank, "\\1")
         # click more info
-        mouse_pos((480, 780))
+        mouse_pos(480, 780)
         left_click()
 
         # check more info (resource statistics)  and (battale statistics)
@@ -207,7 +207,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
         screenshot(win, path, kingdom, rank, "\\2")
 
         # click copy name
-        mouse_pos((510, 210))
+        mouse_pos(510, 210)
         left_click()
         time.sleep(.3)
         with codecs.open(path + "\\" + kingdom + "\\" + str(rank) + "\\playerName.txt", "w", "utf-8-sig") as temp:
@@ -218,7 +218,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
         crop_ss_2(path, kingdom, rank)
 
         # click exit more info
-        mouse_pos((1610, 95))
+        mouse_pos(1610, 95)
         left_click()
 
         # check if gov profile screen on
@@ -238,7 +238,7 @@ def loop_on_players_in_ranks(win, path, kingdom):
         if count == 100:
             break
         # click exit governor profile
-        mouse_pos((1570, 150))
+        mouse_pos(1570, 150)
         left_click()
 
         rank += 1
@@ -256,10 +256,10 @@ def loop_on_power_ranks(win, path, kingdom):
 
 
 def main():
-    #start_game()
-    #open_ranks()
-    #loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  30-07-2021")
-    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  04-08-2021")
+    start_game()
+    open_ranks()
+    loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  04-08-2021")
+    #loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  04-08-2021")
  
 if __name__ == '__main__':
     main()
