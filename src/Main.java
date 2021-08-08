@@ -12,11 +12,17 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import controller.Controller;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import model.Kingdom;
+import model.Model;
 import model.Player;
 import model.WriteDataToExcel;
+import mongoDB.MongoConnection;
+import view.View;
 
-public class Main {
+public class Main extends Application{
 	public static final String PATH_OF_PIC = "E:\\rok bot data";
 	public static final String PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
 	public static final String WINDOW_NAME = "BlueStacks 2";
@@ -25,7 +31,19 @@ public class Main {
 			ID_PIC = "id_snap", NAME_PIC = "name_snap", POWER_PIC = "power_snap", RSS_A_PIC = "rss_a_snap",
 			RSS_G_PIC = "rss_g_snap", T1_PIC = "t1_snap", T2_PIC = "t2_snap", T3_PIC = "t3_snap", T4_PIC = "t4_snap",
 			T5_PIC = "t5_snap";
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Model theModel = new Model();
+		View theView = new View(primaryStage);
+		Controller theController = new Controller(theModel, theView);
+	}
+	
+	/**
 	public static void main(String[] args) {
 		final int KINGDOM_NUMBER = 1254;
 
@@ -33,10 +51,12 @@ public class Main {
 
 		String kingdomNumber = kingdomNumber(kingdom);
 		
+		//MongoConnection.makeConnection();
+		
 		createDirForKingdomExcel(kingdom);
-		/**
-		createDirForPowerOnly(kingdom);
 
+		createDirForPowerOnly(kingdom);
+		
 		kingdom.setPower(convertToPower(kingdomNumber, 300));
 
 		try {
@@ -45,7 +65,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		**/
+		
 		createDirForAllStats(kingdom);
 
 		for (int rank = 1; rank < 301; rank++) {
@@ -62,6 +82,7 @@ public class Main {
 		//System.out.println(kingdom);
 		
 	}
+	**/
 
 	public static String kingdomNumber(Kingdom kingdom) {
 		return "k" + kingdom.getNumber() + "  " + kingdom.getDate();
