@@ -38,6 +38,10 @@ public class Kingdom {
 	public int getNumber() {
 		return number;
 	}
+	
+	public String getKingdomPath() {
+		return "k" + number + "  " + getDate();
+	}
 
 	private void setNumber(int number) {
 		this.number = number;

@@ -1,28 +1,11 @@
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Kingdom;
 import model.Model;
-import model.Player;
-import model.WriteDataToExcel;
-import mongoDB.MongoConnection;
 import view.View;
 
 public class Main extends Application{
+	/**
 	public static final String PATH_OF_PIC = "E:\\rok bot data";
 	public static final String PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
 	public static final String WINDOW_NAME = "BlueStacks 2";
@@ -31,6 +14,7 @@ public class Main extends Application{
 			ID_PIC = "id_snap", NAME_PIC = "name_snap", POWER_PIC = "power_snap", RSS_A_PIC = "rss_a_snap",
 			RSS_G_PIC = "rss_g_snap", T1_PIC = "t1_snap", T2_PIC = "t2_snap", T3_PIC = "t3_snap", T4_PIC = "t4_snap",
 			T5_PIC = "t5_snap";
+	**/
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -82,12 +66,12 @@ public class Main extends Application{
 		//System.out.println(kingdom);
 		
 	}
-	**/
+	
 
 	public static String kingdomNumber(Kingdom kingdom) {
 		return "k" + kingdom.getNumber() + "  " + kingdom.getDate();
 	}
-
+	
 	public static void createDirForAllStats(Kingdom kingdom) {
 		String path = PATH_OF_PIC + "\\" + kingdomNumber(kingdom);
 		File file = new File(path);
@@ -115,7 +99,7 @@ public class Main extends Application{
 			file.mkdir();
 		}
 	}
-
+	
 	public static void takeSS(String kingdom, int rank, String imgName) {
 		String pathPython = PATH_OF_PYTHON_FILES + "\\take_ss.py";
 		String[] cmd = new String[7];
@@ -176,7 +160,7 @@ public class Main extends Application{
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static Player convertToObj(String kingdom, int rank) {
 		Player p = new Player();
 		String name = "";
@@ -304,6 +288,7 @@ public class Main extends Application{
 		}
 		return "";
 	}
+	
 
 	public static String pasteName() {
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -320,5 +305,6 @@ public class Main extends Application{
 		}
 		return "";
 	}
+	**/
 
 }
