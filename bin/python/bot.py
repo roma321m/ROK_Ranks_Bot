@@ -256,10 +256,10 @@ def loop_on_power_ranks(win, path, kingdom):
 
 
 def main():
-    #start_game()
-    #open_ranks()
-    #loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  04-08-2021")
-    loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  08-08-2021")
+    start_game()
+    open_ranks()
+    loop_on_players_in_ranks("BlueStacks 2", "E:\\rok bot data", "k1254  10-08-2021")
+    #loop_on_power_ranks("BlueStacks 2", "E:\\rok bot data", "Power - k1254  08-08-2021")
  
 if __name__ == '__main__':
     main()

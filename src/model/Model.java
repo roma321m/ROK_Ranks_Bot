@@ -3,49 +3,55 @@ package model;
 import java.util.Map;
 
 import command.CreateDir_Command;
+import command.GatheringDataScene_Command;
 import command.PasteName_Command;
-import command.SystemCommand;
 import command.TesseractUse_Command;
 import command.UserCommand;
 
 public class Model {
 	private UserCommand userCommand;
-	private SystemCommand systemCommand;
 
 	public Model() {
-		// kingdom obj temporary solution
-		final int KINGDOM_NUMBER = 1254;
-		Kingdom kingdom = new Kingdom(KINGDOM_NUMBER);
+		User user = User.getInstance();
 
-		CreateDir_Command createDirCommand = new CreateDir_Command(kingdom);
-		TesseractUse_Command tesseractUse_Command = new TesseractUse_Command(kingdom);
+		CreateDir_Command createDirCommand = new CreateDir_Command(user);
+		TesseractUse_Command tesseractUse_Command = new TesseractUse_Command(user);
 		PasteName_Command pasteName_Command = new PasteName_Command();
+		GatheringDataScene_Command gatheringDataScene_Command = new GatheringDataScene_Command(user);
 
-		SystemCommand systemCommand = new SystemCommand(createDirCommand, tesseractUse_Command, pasteName_Command);
-		UserCommand userCommand = new UserCommand();
+		userCommand = new UserCommand(createDirCommand, tesseractUse_Command, pasteName_Command,
+				gatheringDataScene_Command);
+	}
+
+	public void updateGameWindowName(String name) {
+		userCommand.setGameWindowName(name);
+	}
+
+	public void updateGatheringType(String type) {
+		userCommand.setGatheringType(type);
 	}
 
 	public void createDirForAllStats() {
-		systemCommand.createDirForAllStats();
+		userCommand.createDirForAllStats();
 	}
 
 	public void createDirForPowerOnly() {
-		systemCommand.createDirForPowerOnly();
+		userCommand.createDirForPowerOnly();
 	}
 
 	public void createDirForKingdomExcel() {
-		systemCommand.createDirForKingdomExcel();
+		userCommand.createDirForKingdomExcel();
 	}
 
 	public Player convertToPlayerObj(int rank) {
-		return systemCommand.convertToPlayerObj(rank);
+		return userCommand.convertToPlayerObj(rank);
 	}
 
 	public Map<String, String> convertToMapOfPowers(int endRank) {
-		return systemCommand.convertToMapOfPowers(endRank);
+		return userCommand.convertToMapOfPowers(endRank);
 	}
-	
+
 	public String pasteName() {
-		return systemCommand.pasteName();
+		return userCommand.pasteName();
 	}
 }

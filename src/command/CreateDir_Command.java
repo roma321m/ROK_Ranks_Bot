@@ -5,13 +5,16 @@ import java.util.Map;
 
 import model.Kingdom;
 import model.Player;
+import model.User;
 
 public class CreateDir_Command implements Command {
 	
+	User user;
 	Kingdom myKingdom;
 
-	public CreateDir_Command(Kingdom kingdom) {
-		this.myKingdom = kingdom;
+	public CreateDir_Command(User user) {
+		this.user = user;
+		myKingdom = user.getKingdom();
 	}
 
 	@Override
@@ -61,5 +64,20 @@ public class CreateDir_Command implements Command {
 	public String pasteName() {
 		// Do nothing
 		return null;
+	}
+
+	@Override
+	public void setGatheringType(String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void setGameWindowName(String name) {
+		// Do nothing
+	}
+
+	@Override
+	public void setKingdom(String kingdomNumber) {
+		// Do nothing
 	}
 }

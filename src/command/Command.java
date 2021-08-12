@@ -24,5 +24,9 @@ public interface Command {
 
 	// PasteName
 	String pasteName();
-
+	
+	// GathringDataScene
+	void setGatheringType(String type);
+	void setGameWindowName(String name);
+	void setKingdom(String kingdomNumber);
 }

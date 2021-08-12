@@ -11,13 +11,16 @@ import java.util.Map;
 
 import model.Kingdom;
 import model.Player;
+import model.User;
 
 public class TesseractUse_Command implements Command {
 
+	User user;
 	Kingdom myKingdom;
 
-	public TesseractUse_Command(Kingdom kingdom) {
-		this.myKingdom = kingdom;
+	public TesseractUse_Command(User user) {
+		this.user = user;
+		myKingdom = user.getKingdom();
 	}
 
 	@Override
@@ -149,7 +152,6 @@ public class TesseractUse_Command implements Command {
 		}
 		return "";
 	}
-	
 
 	@Override
 	public void createDirForAllStats() {
@@ -165,11 +167,27 @@ public class TesseractUse_Command implements Command {
 	public void createDirForKingdomExcel() {
 		// Do nothing
 	}
-	
+
 	@Override
 	public String pasteName() {
 		// Do nothing
 		return null;
+	}
+
+	@Override
+	public void setGatheringType(String type) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setGameWindowName(String name) {
+		// Do nothing
+	}
+	
+	@Override
+	public void setKingdom(String kingdomNumber) {
+		// Do nothing
 	}
 
 }

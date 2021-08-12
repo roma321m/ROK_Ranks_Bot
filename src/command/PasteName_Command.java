@@ -59,4 +59,19 @@ public class PasteName_Command implements Command {
 		return null;
 	}
 
+	@Override
+	public void setGatheringType(String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void setGameWindowName(String name) {
+		// Do nothing
+	}
+	
+	@Override
+	public void setKingdom(String kingdomNumber) {
+		// Do nothing
+	}
+
 }
