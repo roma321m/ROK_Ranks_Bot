@@ -1,6 +1,8 @@
 package model;
 
-public class Player {
+import java.util.Comparator;
+
+public class Player implements Comparable<Player> {
 
 	private String name;
 	private long id, power, killPoints, t1, t2, t3, t4, t5, deaths, rss_a, rss_g, helps, barbs;
@@ -195,6 +197,62 @@ public class Player {
 			this.helps = 0;
 	}
 
+	public static Comparator<Player> PlayerPowerComparator = new Comparator<Player>() {
+		public int compare(Player p1, Player p2) {
+			return p1.compareTo(p2);
+		}
+	};
+	
+	public static Comparator<Player> PlayerDeadsComparator = new Comparator<Player>() {
+		public int compare(Player p1, Player p2) {
+			if (p1 == null || p2 == null || p1.getDeaths() == p2.getDeaths())
+				return 0;
+			if (p1.getDeaths() > p2.getDeaths())
+				return 1;
+			return -1;
+		}
+	};
+	
+	public static Comparator<Player> PlayerKillPointsComparator = new Comparator<Player>() {
+		public int compare(Player p1, Player p2) {
+			if (p1 == null || p2 == null || p1.getKillPoints() == p2.getKillPoints())
+				return 0;
+			if (p1.getKillPoints() > p2.getKillPoints())
+				return 1;
+			return -1;
+		}
+	};
+	
+	public static Comparator<Player> PlayerT4KillsComparator = new Comparator<Player>() {
+		public int compare(Player p1, Player p2) {
+			if (p1 == null || p2 == null || p1.getT4() == p2.getT4())
+				return 0;
+			if (p1.getT4() > p2.getT4())
+				return 1;
+			return -1;
+		}
+	};
+	
+	public static Comparator<Player> PlayerT5KillsComparator = new Comparator<Player>() {
+		public int compare(Player p1, Player p2) {
+			if (p1 == null || p2 == null || p1.getT5() == p2.getT5())
+				return 0;
+			if (p1.getT5() > p2.getT5())
+				return 1;
+			return -1;
+		}
+	};
+
+	@Override
+	public int compareTo(Player p) {
+		if (this == null || p == null)
+			return 0;
+		if (this.power > p.getPower())
+			return 1;
+		return -1;
+	}
+
+	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\n------------------------------\n");

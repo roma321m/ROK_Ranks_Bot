@@ -2,35 +2,48 @@ package command;
 
 import java.util.Map;
 
+import model.Kingdom;
 import model.Player;
 import model.User;
 
-public class GatheringDataScene_Command implements Command {
+public class SortPlayersList_Command implements Command {
+
 	private User user;
+	private Kingdom myKingdom;
 
-	public GatheringDataScene_Command(User user) {
+	public SortPlayersList_Command(User user) {
 		this.user = user;
+		myKingdom = this.user.getKingdom();
 	}
 
 	@Override
-	public void setKingdom(String kingdomNumber) {
-		user.setKingdom(kingdomNumber);
+	public void sortPlayersListByT4Kills() {
+		myKingdom.sortPlayersListByT4Kills();
 	}
 
 	@Override
-	public void setGameWindowName(String name) {
-		user.setGameWindowName(name);
+	public void sortPlayersListByT5Kills() {
+		myKingdom.sortPlayersListByT5Kills();
 	}
 
 	@Override
-	public void setGatheringType(String type) {
-		user.setGatherType(type);
+	public void sortPlayersListBydeads() {
+		myKingdom.sortPlayersListBydeads();
+	}
+
+	@Override
+	public void sortPlayersListByKillPoints() {
+		myKingdom.sortPlayersListByKillPoints();
+	}
+
+	@Override
+	public void sortPlayersListByPower() {
+		myKingdom.sortPlayersByPower();
 	}
 	
 	/////////////////////////////////////////////
 	//implemented in different commands classes//
 	/////////////////////////////////////////////
-
 	@Override
 	public void createDirForAllStats() {
 		// Do nothing
@@ -65,6 +78,21 @@ public class GatheringDataScene_Command implements Command {
 	}
 
 	@Override
+	public void setGatheringType(String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void setGameWindowName(String name) {
+		// Do nothing
+	}
+
+	@Override
+	public void setKingdom(String kingdomNumber) {
+		// Do nothing
+	}
+
+	@Override
 	public void exportEcxelFileForAllStats() {
 		// Do nothing
 	}
@@ -74,28 +102,4 @@ public class GatheringDataScene_Command implements Command {
 		// Do nothing
 	}
 
-	@Override
-	public void sortPlayersListByT4Kills() {
-		// Do nothing
-	}
-
-	@Override
-	public void sortPlayersListByT5Kills() {
-		// Do nothing
-	}
-
-	@Override
-	public void sortPlayersListBydeads() {
-		// Do nothing
-	}
-
-	@Override
-	public void sortPlayersListByKillPoints() {
-		// Do nothing
-	}
-
-	@Override
-	public void sortPlayersListByPower() {
-		// Do nothing
-	}
 }

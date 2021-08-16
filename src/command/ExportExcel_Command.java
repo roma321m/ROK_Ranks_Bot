@@ -1,35 +1,37 @@
 package command;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import java.util.Map;
 
+import model.Kingdom;
 import model.Player;
+import model.User;
+import model.WriteDataToExcel;
 
-public class PasteName_Command implements Command {
+public class ExportExcel_Command implements Command{
+	private User user;
+	private Kingdom myKingdom;
 
-	public PasteName_Command() {
-
+	public ExportExcel_Command(User user) {
+		this.user = user;
+		myKingdom = this.user.getKingdom();
+	}
+	
+	public void exportEcxelFileForPowerOnly() {
+		try {
+			WriteDataToExcel.writePowerDataToExcel(PATH_OF_PIC + "\\Excel files\\" + myKingdom.getNumber()
+					+ "\\Power - " + myKingdom.getNumber() + " " + myKingdom.getDate() + ".xlsx", myKingdom);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Override
-	public String pasteName() {
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		DataFlavor flavor = DataFlavor.stringFlavor;
-		if (clipboard.isDataFlavorAvailable(flavor)) {
-			try {
-				String text = (String) clipboard.getData(flavor);
-				return text;
-			} catch (UnsupportedFlavorException e) {
-				System.out.println(e);
-			} catch (IOException e) {
-				System.out.println(e);
-			}
+	public void exportEcxelFileForAllStats() {
+		try {
+			WriteDataToExcel.writeAllStatsDataToExcel(PATH_OF_PIC + "\\Excel files\\" + myKingdom.getNumber() + "\\"
+					+ myKingdom.getNumber() + " " + myKingdom.getDate() + ".xlsx", myKingdom);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return "";
 	}
 	
 	/////////////////////////////////////////////
@@ -64,6 +66,12 @@ public class PasteName_Command implements Command {
 	}
 
 	@Override
+	public String pasteName() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
 	public void setGatheringType(String type) {
 		// Do nothing
 	}
@@ -72,19 +80,9 @@ public class PasteName_Command implements Command {
 	public void setGameWindowName(String name) {
 		// Do nothing
 	}
-	
+
 	@Override
 	public void setKingdom(String kingdomNumber) {
-		// Do nothing
-	}
-
-	@Override
-	public void exportEcxelFileForAllStats() {
-		// Do nothing
-	}
-
-	@Override
-	public void exportEcxelFileForPowerOnly() {
 		// Do nothing
 	}
 
@@ -112,5 +110,4 @@ public class PasteName_Command implements Command {
 	public void sortPlayersListByPower() {
 		// Do nothing
 	}
-
 }

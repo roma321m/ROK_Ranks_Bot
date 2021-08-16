@@ -9,12 +9,12 @@ import model.User;
 
 public class CreateDir_Command implements Command {
 	
-	User user;
-	Kingdom myKingdom;
+	private User user;
+	private Kingdom myKingdom;
 
 	public CreateDir_Command(User user) {
 		this.user = user;
-		myKingdom = user.getKingdom();
+		myKingdom = this.user.getKingdom();
 	}
 
 	@Override
@@ -47,6 +47,10 @@ public class CreateDir_Command implements Command {
 			file.mkdir();
 		}
 	}
+	
+	/////////////////////////////////////////////
+	//implemented in different commands classes//
+	/////////////////////////////////////////////
 
 	@Override
 	public Player convertToPlayerObj(int rank) {
@@ -78,6 +82,41 @@ public class CreateDir_Command implements Command {
 
 	@Override
 	public void setKingdom(String kingdomNumber) {
+		// Do nothing
+	}
+
+	@Override
+	public void exportEcxelFileForAllStats() {
+		// Do nothing
+	}
+
+	@Override
+	public void exportEcxelFileForPowerOnly() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByT4Kills() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByT5Kills() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListBydeads() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByKillPoints() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByPower() {
 		// Do nothing
 	}
 }

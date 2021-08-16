@@ -3,6 +3,8 @@ package model;
 public class User {
 	private static User single_instance = null;
 
+	public static final String PATH_OF_PIC = "E:\\rok bot data",
+			PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
 	public static final String FULL_STATS = "full", POWER_ONLY = "power";
 	public static final String BLUESTACKS_1 = "BlueStack 1", BLUESTACKS_2 = "BlueStack 2", BLUESTACKS_3 = "BlueStack 3",
 			BLUESTACKS_4 = "BlueStack 4";
@@ -30,8 +32,7 @@ public class User {
 		int number = 0;
 		try {
 			number = Integer.parseInt(kingdomNumber);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (number <= MAX_KINGDOM_NUMBER && number >= MIN_KINGDOM_NUMBER)

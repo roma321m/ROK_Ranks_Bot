@@ -15,12 +15,12 @@ import model.User;
 
 public class TesseractUse_Command implements Command {
 
-	User user;
-	Kingdom myKingdom;
+	private User user;
+	private Kingdom myKingdom;
 
 	public TesseractUse_Command(User user) {
 		this.user = user;
-		myKingdom = user.getKingdom();
+		myKingdom = this.user.getKingdom();
 	}
 
 	@Override
@@ -152,6 +152,10 @@ public class TesseractUse_Command implements Command {
 		}
 		return "";
 	}
+	
+	/////////////////////////////////////////////
+	//implemented in different commands classes//
+	/////////////////////////////////////////////
 
 	@Override
 	public void createDirForAllStats() {
@@ -176,8 +180,7 @@ public class TesseractUse_Command implements Command {
 
 	@Override
 	public void setGatheringType(String type) {
-		// TODO Auto-generated method stub
-
+		// Do nothing 
 	}
 
 	@Override
@@ -187,6 +190,41 @@ public class TesseractUse_Command implements Command {
 	
 	@Override
 	public void setKingdom(String kingdomNumber) {
+		// Do nothing
+	}
+
+	@Override
+	public void exportEcxelFileForAllStats() {
+		// Do nothing
+	}
+
+	@Override
+	public void exportEcxelFileForPowerOnly() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByT4Kills() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByT5Kills() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListBydeads() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByKillPoints() {
+		// Do nothing
+	}
+
+	@Override
+	public void sortPlayersListByPower() {
 		// Do nothing
 	}
 

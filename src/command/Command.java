@@ -1,7 +1,6 @@
 package command;
 
 import java.util.Map;
-
 import model.Player;
 
 public interface Command {
@@ -29,4 +28,15 @@ public interface Command {
 	void setGatheringType(String type);
 	void setGameWindowName(String name);
 	void setKingdom(String kingdomNumber);
+	
+	// exportExcel
+	void exportEcxelFileForAllStats();
+	void exportEcxelFileForPowerOnly();
+	
+	// sortPlayersList
+	void sortPlayersListByT4Kills();
+	void sortPlayersListByT5Kills();
+	void sortPlayersListBydeads();
+	void sortPlayersListByKillPoints();
+	void sortPlayersListByPower();
 }

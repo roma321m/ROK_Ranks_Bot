@@ -14,7 +14,7 @@ import java.util.TreeMap;
 public class WriteDataToExcel {
 
 	// any exceptions need to be caught
-	public static void writeDataToExcel(String filePath, Kingdom kingdom) throws Exception {
+	public static void writeAllStatsDataToExcel(String filePath, Kingdom kingdom) throws Exception {
 		// workbook object
 		XSSFWorkbook workbook = new XSSFWorkbook();
 

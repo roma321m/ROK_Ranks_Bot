@@ -14,7 +14,6 @@ public class Main extends Application{
 			ID_PIC = "id_snap", NAME_PIC = "name_snap", POWER_PIC = "power_snap", RSS_A_PIC = "rss_a_snap",
 			RSS_G_PIC = "rss_g_snap", T1_PIC = "t1_snap", T2_PIC = "t2_snap", T3_PIC = "t3_snap", T4_PIC = "t4_snap",
 			T5_PIC = "t5_snap";
-	
 	**/
 	public static void main(String[] args) {
 		launch(args);
@@ -73,7 +72,6 @@ public class Main extends Application{
 		}
 
 		//System.out.println(kingdom);
-		
 	}
 	
 

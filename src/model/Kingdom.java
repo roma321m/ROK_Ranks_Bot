@@ -2,6 +2,7 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 
@@ -19,6 +20,26 @@ public class Kingdom {
 		setDate();
 		setPlayers();
 		setPower(null);
+	}
+	
+	public void sortPlayersByPower() {
+		Collections.sort(players, Player.PlayerPowerComparator);
+	}
+	
+	public void sortPlayersListByT4Kills() {
+		Collections.sort(players, Player.PlayerT4KillsComparator);
+	}
+	
+	public void sortPlayersListByT5Kills() {
+		Collections.sort(players, Player.PlayerT5KillsComparator);
+	}
+	
+	public void sortPlayersListBydeads() {
+		Collections.sort(players, Player.PlayerDeadsComparator);
+	}
+	
+	public void sortPlayersListByKillPoints() {
+		Collections.sort(players, Player.PlayerKillPointsComparator);
 	}
 
 	public void setPower(Map<String, String> power) {

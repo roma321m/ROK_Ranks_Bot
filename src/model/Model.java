@@ -3,8 +3,10 @@ package model;
 import java.util.Map;
 
 import command.CreateDir_Command;
+import command.ExportExcel_Command;
 import command.GatheringDataScene_Command;
 import command.PasteName_Command;
+import command.SortPlayersList_Command;
 import command.TesseractUse_Command;
 import command.UserCommand;
 
@@ -18,9 +20,39 @@ public class Model {
 		TesseractUse_Command tesseractUse_Command = new TesseractUse_Command(user);
 		PasteName_Command pasteName_Command = new PasteName_Command();
 		GatheringDataScene_Command gatheringDataScene_Command = new GatheringDataScene_Command(user);
+		ExportExcel_Command exportExcel_Command = new ExportExcel_Command(user);
+		SortPlayersList_Command sortPlayersList_Command = new SortPlayersList_Command(user);
 
 		userCommand = new UserCommand(createDirCommand, tesseractUse_Command, pasteName_Command,
-				gatheringDataScene_Command);
+				gatheringDataScene_Command, exportExcel_Command, sortPlayersList_Command);
+	}
+
+	public void sortPlayersListByT4Kills() {
+		userCommand.sortPlayersListByT4Kills();
+	}
+
+	public void sortPlayersListByT5Kills() {
+		userCommand.sortPlayersListByT5Kills();
+	}
+
+	public void sortPlayersListBydeads() {
+		userCommand.sortPlayersListBydeads();
+	}
+
+	public void sortPlayersListByKillPoints() {
+		userCommand.sortPlayersListByKillPoints();
+	}
+
+	public void sortPlayersListByPower() {
+		userCommand.sortPlayersListByPower();
+	}
+
+	public void exportEcxelFileForAllStats() {
+		userCommand.exportEcxelFileForAllStats();
+	}
+
+	public void exportEcxelFileForPowerOnly() {
+		userCommand.exportEcxelFileForPowerOnly();
 	}
 
 	public void updateGameWindowName(String name) {
