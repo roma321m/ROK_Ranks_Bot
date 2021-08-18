@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import model.Player;
@@ -106,5 +107,11 @@ public class GatheringDataScene_Command implements Command {
 	@Override
 	public void sortPlayersListByPower() {
 		// Do nothing
+	}
+	
+	@Override
+	public ArrayList<Player> getPlayersList() {
+		// Do nothing
+		return null;
 	}
 }

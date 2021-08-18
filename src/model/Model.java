@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import command.CreateDir_Command;
@@ -25,6 +26,10 @@ public class Model {
 
 		userCommand = new UserCommand(createDirCommand, tesseractUse_Command, pasteName_Command,
 				gatheringDataScene_Command, exportExcel_Command, sortPlayersList_Command);
+	}
+	
+	public ArrayList<Player> getPlayersList(){
+		return userCommand.getPlayersList();
 	}
 	
 	public boolean setKingdom(String kingdomNumber) {

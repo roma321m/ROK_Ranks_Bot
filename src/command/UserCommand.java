@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.Map;
 import model.Player;
 
@@ -20,6 +21,10 @@ public class UserCommand {
 		this.gatheringDataScene = gatheringDataScene;
 		this.exportExcel = exportExcel;
 		this.sortPlayersList = sortPlayersList;
+	}
+
+	public ArrayList<Player> getPlayersList() {
+		return sortPlayersList.getPlayersList();
 	}
 
 	public String getKingdomNumber() {

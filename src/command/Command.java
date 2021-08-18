@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.Map;
 import model.Player;
 
@@ -40,4 +41,5 @@ public interface Command {
 	void sortPlayersListBydeads();
 	void sortPlayersListByKillPoints();
 	void sortPlayersListByPower();
+	ArrayList<Player> getPlayersList();
 }

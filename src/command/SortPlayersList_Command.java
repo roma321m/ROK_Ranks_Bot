@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import model.Kingdom;
@@ -14,6 +15,10 @@ public class SortPlayersList_Command implements Command {
 	public SortPlayersList_Command(User user) {
 		this.user = user;
 		myKingdom = this.user.getKingdom();
+	}
+	
+	public ArrayList<Player> getPlayersList(){
+		return myKingdom.getPlayers();
 	}
 
 	@Override

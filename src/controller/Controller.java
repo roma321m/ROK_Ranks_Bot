@@ -42,6 +42,56 @@ public class Controller {
 		};
 		theView.setKingdom(eventSetKingdom);
 
+		// sort by power
+		EventHandler<ActionEvent> eventSortByPower = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				theModel.sortPlayersListByPower();
+				theView.updatePlayersList(theModel.getPlayersList());
+			}
+		};
+		theView.sortByPower(eventSortByPower);
+
+		// sort by deads
+		EventHandler<ActionEvent> eventSortByDeads = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				theModel.sortPlayersListBydeads();
+				theView.updatePlayersList(theModel.getPlayersList());
+			}
+		};
+		theView.sortByDeads(eventSortByDeads);
+
+		// sort by kill points
+		EventHandler<ActionEvent> eventSortByKillPoints = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				theModel.sortPlayersListByKillPoints();
+				theView.updatePlayersList(theModel.getPlayersList());
+			}
+		};
+		theView.sortByKillPoints(eventSortByKillPoints);
+
+		// sort by t4 kills
+		EventHandler<ActionEvent> eventSortByT4Kills = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				theModel.sortPlayersListByT4Kills();
+				theView.updatePlayersList(theModel.getPlayersList());
+			}
+		};
+		theView.sortByT4(eventSortByT4Kills);
+
+		// sort by t5 kills
+		EventHandler<ActionEvent> eventSortByT5Kills = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				theModel.sortPlayersListByT5Kills();
+				theView.updatePlayersList(theModel.getPlayersList());
+			}
+		};
+		theView.sortByT5(eventSortByT5Kills);
+
 		// changing the type in the model base on the selection in the view
 		ChangeListener<Toggle> gatherTypeChangeListener = new ChangeListener<Toggle>() {
 			@Override

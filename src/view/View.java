@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.Map;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
@@ -22,18 +25,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.Player;
 import model.User;
 
-public class View implements GatheringData_View, PopUps_View {
+public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 	public static final double HEIGHT = 720, WIDTH = 1080;
 	private Stage window;
-	private Scene sceneMain, sceneGatherData;
-	private BorderPane bpMain, bpGatherData;
+	private Scene sceneMain, sceneGatherData, scenePlayersList;
+	private BorderPane bpMain, bpGatherData, bpPlayersList;
 	private RadioButton rbFullStats, rbPowerOnly, rb1, rb2, rb3, rb4;
 	private ToggleGroup tgGatherType, tgBuleStacks;
 	private TextField tfKingdomNumber;
 	private Label lbKingdomNumber;
-	Button btSetKingdom;
+	private Button btSetKingdom, btSortPower, btSortDeads, btSortT4, btSortT5, btSortKillPoits;
+	private ListView<Label> playersList;
 	private Group root;
 
 	public View(Stage primaryStage) {
@@ -57,11 +62,13 @@ public class View implements GatheringData_View, PopUps_View {
 	private void defineGlobal() {
 		root = new Group();
 		defineGlobalGatherData();
+		defineGlobalPlayersList();
 	}
 
 	private void buildAllScenes() {
 		buildSceneMain();
 		buildSceneGatheringData();
+		buildScenePlayersList();
 	}
 
 	private void buildSceneMain() {
@@ -79,10 +86,20 @@ public class View implements GatheringData_View, PopUps_View {
 			showGatherDataScene();
 		});
 
+		Button btPlayersList;
+		btPlayersList = new Button("Players List");
+		btPlayersList.setPrefSize(600, 45);
+		btPlayersList.setFont(new Font(16));
+
+		btPlayersList.setOnAction((event) -> {
+			showPlayersListScene();
+		});
+
 		// Final box
 		VBox vCenter = new VBox();
-		vCenter.getChildren().addAll(btGatherData);
+		vCenter.getChildren().addAll(btGatherData, btPlayersList);
 		VBox.setMargin(btGatherData, new Insets(20, 100, 0, 250));
+		VBox.setMargin(btPlayersList, new Insets(20, 100, 0, 250));
 
 		// Defining all the panes
 		StackPane spTop = new StackPane();
@@ -99,6 +116,24 @@ public class View implements GatheringData_View, PopUps_View {
 
 		// creating the scene
 		sceneMain = new Scene(bpMain, WIDTH, HEIGHT);
+	}
+
+	@Override
+	public void popInputError(String msg) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Input error");
+		alert.setHeaderText("You have an input error");
+		alert.setContentText(msg);
+		alert.showAndWait();
+	}
+
+	@Override
+	public void popSuccessfully(String title, String Header, String content) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(Header);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 
 	public void showMainMenuScene() {
@@ -276,21 +311,123 @@ public class View implements GatheringData_View, PopUps_View {
 	}
 
 	@Override
-	public void popInputError(String msg) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Input error");
-		alert.setHeaderText("You have an input error");
-		alert.setContentText(msg);
-		alert.showAndWait();
+	public void defineGlobalPlayersList() {
+		playersList = new ListView<Label>();
+		playersList.setPrefSize(WIDTH / 1.5, 609);
+		btSortPower = new Button("Power");
+		btSortPower.setPrefSize(150, 45);
+		btSortPower.setFont(new Font(16));
+		btSortDeads = new Button("Deads");
+		btSortDeads.setPrefSize(150, 45);
+		btSortDeads.setFont(new Font(16));
+		btSortT4 = new Button("T4 kills");
+		btSortT4.setPrefSize(150, 45);
+		btSortT4.setFont(new Font(16));
+		btSortT5 = new Button("T5 kills");
+		btSortT5.setPrefSize(150, 45);
+		btSortT5.setFont(new Font(16));
+		btSortKillPoits = new Button("Kill points");
+		btSortKillPoits.setPrefSize(150, 45);
+		btSortKillPoits.setFont(new Font(16));
 	}
 
 	@Override
-	public void popSuccessfully(String title, String Header, String content) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle(title);
-		alert.setHeaderText(Header);
-		alert.setContentText(content);
-		alert.showAndWait();
+	public void buildScenePlayersList() {
+		Button btMain = new Button("Main Menu");
+		btMain.setPrefSize(150, 43);
+		btMain.setFont(new Font(16));
+
+		Label lMain = new Label("Go to the main menu: ");
+		lMain.setFont(new Font(24));
+
+		Label lbSortOption = new Label("Sort the list by: ");
+		lbSortOption.setFont(new Font(32));
+		lbSortOption.setTextFill(Color.DARKCYAN);
+
+		VBox vLeft = new VBox();
+		VBox vRight = new VBox();
+		vLeft.getChildren().addAll(playersList);
+		vRight.getChildren().addAll(lbSortOption, btSortPower, btSortDeads, btSortT4, btSortT5, btSortKillPoits, lMain,
+				btMain);
+
+		VBox.setMargin(playersList, new Insets(10, 10, 10, 10));
+
+		HBox.setMargin(lbSortOption, new Insets(20, 0, 0, 0));
+
+		VBox.setMargin(btSortPower, new Insets(30, 10, 0, 70));
+		VBox.setMargin(btSortDeads, new Insets(10, 5, 0, 70));
+		VBox.setMargin(btSortT4, new Insets(10, 5, 0, 0));
+		VBox.setMargin(btSortT5, new Insets(0, 5, 0, 0));
+		VBox.setMargin(btSortKillPoits, new Insets(10, 5, 0, 0));
+		VBox.setMargin(lMain, new Insets(200, 5, 0, 0));
+		VBox.setMargin(btMain, new Insets(0, 5, 20, 50));
+
+		btMain.setOnAction((event) -> {
+			showMainMenuScene();
+		});
+
+		HBox hCenter = new HBox();
+		hCenter.getChildren().addAll(vLeft, vRight);
+
+		// Defining all the panes
+		StackPane spTop = new StackPane();
+		Pane pCenter = new Pane();
+
+		Label lbTitle = new Label("Players List in the current kingdom");
+		lbTitle.setFont(new Font(32));
+		lbTitle.setTextFill(Color.DARKCYAN);
+		// Attaching all the view tools to the panes
+		spTop.getChildren().add(lbTitle);
+		pCenter.getChildren().addAll(root, hCenter);
+
+		// Defining the main pane of the scene and attaching all the side pane to it.
+		bpPlayersList = new BorderPane();
+		bpPlayersList.setTop(spTop);
+		bpPlayersList.setCenter(pCenter);
+
+		// creating the scene
+		scenePlayersList = new Scene(bpPlayersList, WIDTH, HEIGHT);
+	}
+
+	@Override
+	public void showPlayersListScene() {
+		window.setScene(scenePlayersList);
+	}
+
+	@Override
+	public void updatePlayersList(ArrayList<Player> arr) {
+		if (arr != null) {
+			playersList.getItems().clear();
+			for (Player p : arr) {
+				Label lb = new Label(p.toString());
+				playersList.getItems().add(lb);
+			}
+		}
+	}
+
+	@Override
+	public void sortByPower(EventHandler<ActionEvent> event) {
+		btSortPower.setOnAction(event);
+	}
+
+	@Override
+	public void sortByDeads(EventHandler<ActionEvent> event) {
+		btSortDeads.setOnAction(event);
+	}
+
+	@Override
+	public void sortByKillPoints(EventHandler<ActionEvent> event) {
+		btSortKillPoits.setOnAction(event);
+	}
+
+	@Override
+	public void sortByT4(EventHandler<ActionEvent> event) {
+		btSortT4.setOnAction(event);
+	}
+
+	@Override
+	public void sortByT5(EventHandler<ActionEvent> event) {
+		btSortT5.setOnAction(event);
 	}
 
 }

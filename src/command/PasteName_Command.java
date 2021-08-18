@@ -5,6 +5,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import model.Player;
@@ -120,4 +121,9 @@ public class PasteName_Command implements Command {
 		// Do nothing
 	}
 
+	@Override
+	public ArrayList<Player> getPlayersList() {
+		// Do nothing
+		return null;
+	}
 }
