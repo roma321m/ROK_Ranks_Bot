@@ -1,15 +1,19 @@
 package view;
 
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -20,7 +24,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.User;
 
-public class View implements GatheringData_View {
+public class View implements GatheringData_View, PopUps_View {
 	public static final double HEIGHT = 720, WIDTH = 1080;
 	private Stage window;
 	private Scene sceneMain, sceneGatherData;
@@ -28,6 +32,8 @@ public class View implements GatheringData_View {
 	private RadioButton rbFullStats, rbPowerOnly, rb1, rb2, rb3, rb4;
 	private ToggleGroup tgGatherType, tgBuleStacks;
 	private TextField tfKingdomNumber;
+	private Label lbKingdomNumber;
+	Button btSetKingdom;
 	private Group root;
 
 	public View(Stage primaryStage) {
@@ -126,6 +132,12 @@ public class View implements GatheringData_View {
 		tfKingdomNumber.setPrefSize(350, 40);
 		tfKingdomNumber.setFont(new Font(20));
 		tfKingdomNumber.getText();
+		lbKingdomNumber = new Label("0");
+		lbKingdomNumber.setFont(new Font(32));
+		lbKingdomNumber.setTextFill(Color.DARKCYAN);
+		btSetKingdom = new Button("Set Kingdom");
+		btSetKingdom.setPrefSize(150, 45);
+		btSetKingdom.setFont(new Font(16));
 	}
 
 	@Override
@@ -135,12 +147,21 @@ public class View implements GatheringData_View {
 		title.setFont(new Font(35));
 		title.setTextFill(Color.DARKBLUE);
 
+		// show the current kingdom selected
+		HBox hCurrentKingdom = new HBox();
+		Label lbCurrentKingdom = new Label("Current Selected kingdom: ");
+		lbCurrentKingdom.setFont(new Font(32));
+		lbCurrentKingdom.setTextFill(Color.DARKCYAN);
+		hCurrentKingdom.getChildren().addAll(lbCurrentKingdom, lbKingdomNumber);
+
 		// 1) choose kingdom
 		Label lKingdom = new Label("1) Choose the kingdom:");
 		lKingdom.setFont(new Font(20));
 		lKingdom.setTextFill(Color.CADETBLUE);
+		HBox hKingdom = new HBox();
+		hKingdom.getChildren().addAll(tfKingdomNumber, btSetKingdom);
 		VBox vKingdom = new VBox();
-		vKingdom.getChildren().addAll(lKingdom, tfKingdomNumber);
+		vKingdom.getChildren().addAll(lKingdom, hKingdom);
 
 		// 2) gathering type
 		Label lType = new Label("2) select the type of gathering you want:");
@@ -173,7 +194,7 @@ public class View implements GatheringData_View {
 
 		// Final box
 		VBox vCenter = new VBox();
-		vCenter.getChildren().addAll(vKingdom, vType, vWindowName, btMainMenu);
+		vCenter.getChildren().addAll(hCurrentKingdom, vKingdom, vType, vWindowName, btMainMenu);
 
 		// Defining all the panes
 		StackPane spTop = new StackPane();
@@ -242,6 +263,34 @@ public class View implements GatheringData_View {
 	@Override
 	public void resetKingdomTextfield() {
 		tfKingdomNumber.clear();
+	}
+
+	@Override
+	public void updateKingdomNumberLabel(String kingdomNumber) {
+		lbKingdomNumber.setText(kingdomNumber);
+	}
+
+	@Override
+	public void setKingdom(EventHandler<ActionEvent> event) {
+		btSetKingdom.setOnAction(event);
+	}
+
+	@Override
+	public void popInputError(String msg) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Input error");
+		alert.setHeaderText("You have an input error");
+		alert.setContentText(msg);
+		alert.showAndWait();
+	}
+
+	@Override
+	public void popSuccessfully(String title, String Header, String content) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(Header);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 
 }

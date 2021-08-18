@@ -13,8 +13,8 @@ public class GatheringDataScene_Command implements Command {
 	}
 
 	@Override
-	public void setKingdom(String kingdomNumber) {
-		user.setKingdom(kingdomNumber);
+	public boolean setKingdom(String kingdomNumber) {
+		return user.setKingdom(kingdomNumber);
 	}
 
 	@Override
@@ -26,9 +26,18 @@ public class GatheringDataScene_Command implements Command {
 	public void setGatheringType(String type) {
 		user.setGatherType(type);
 	}
-	
+
+	public String getKingdomNumber() {
+		try {
+			return user.getKingdom().getNumber() + "";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return "0";
+	}
+
 	/////////////////////////////////////////////
-	//implemented in different commands classes//
+	// implemented in different commands classes//
 	/////////////////////////////////////////////
 
 	@Override

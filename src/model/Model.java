@@ -26,6 +26,14 @@ public class Model {
 		userCommand = new UserCommand(createDirCommand, tesseractUse_Command, pasteName_Command,
 				gatheringDataScene_Command, exportExcel_Command, sortPlayersList_Command);
 	}
+	
+	public boolean setKingdom(String kingdomNumber) {
+		return userCommand.setKingdom(kingdomNumber);
+	}
+	
+	public String getKingdomNumber() {
+		return userCommand.getKingdomNumber();
+	}
 
 	public void sortPlayersListByT4Kills() {
 		userCommand.sortPlayersListByT4Kills();

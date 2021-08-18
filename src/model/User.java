@@ -9,7 +9,7 @@ public class User {
 	public static final String BLUESTACKS_1 = "BlueStack 1", BLUESTACKS_2 = "BlueStack 2", BLUESTACKS_3 = "BlueStack 3",
 			BLUESTACKS_4 = "BlueStack 4";
 	public static final int DEFAULT_KINGDOM = 1254;
-	private static final int MAX_KINGDOM_NUMBER = 3000, MIN_KINGDOM_NUMBER = 1001;
+	public static final int MAX_KINGDOM_NUMBER = 3000, MIN_KINGDOM_NUMBER = 1001;
 
 	private String gatherType;
 	private String gameWindowName;
@@ -28,15 +28,18 @@ public class User {
 		return single_instance;
 	}
 
-	public void setKingdom(String kingdomNumber) {
+	public boolean setKingdom(String kingdomNumber) {
 		int number = 0;
 		try {
 			number = Integer.parseInt(kingdomNumber);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (number <= MAX_KINGDOM_NUMBER && number >= MIN_KINGDOM_NUMBER)
+		if (number <= MAX_KINGDOM_NUMBER && number >= MIN_KINGDOM_NUMBER) {
 			myKingdom = new Kingdom(number);
+			return true;
+		}
+		return false;
 	}
 
 	public Kingdom getKingdom() {

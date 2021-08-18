@@ -8,7 +8,7 @@ import model.Player;
 import model.User;
 
 public class CreateDir_Command implements Command {
-	
+
 	private User user;
 	private Kingdom myKingdom;
 
@@ -47,9 +47,9 @@ public class CreateDir_Command implements Command {
 			file.mkdir();
 		}
 	}
-	
+
 	/////////////////////////////////////////////
-	//implemented in different commands classes//
+	// implemented in different commands classes//
 	/////////////////////////////////////////////
 
 	@Override
@@ -81,8 +81,15 @@ public class CreateDir_Command implements Command {
 	}
 
 	@Override
-	public void setKingdom(String kingdomNumber) {
+	public boolean setKingdom(String kingdomNumber) {
 		// Do nothing
+		return false;
+	}
+
+	@Override
+	public String getKingdomNumber() {
+		// Do nothing
+		return null;
 	}
 
 	@Override
@@ -119,4 +126,5 @@ public class CreateDir_Command implements Command {
 	public void sortPlayersListByPower() {
 		// Do nothing
 	}
+
 }

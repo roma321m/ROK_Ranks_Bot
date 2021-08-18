@@ -1,6 +1,8 @@
 package view;
 
 import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
 
 public interface GatheringData_View {
@@ -34,4 +36,9 @@ public interface GatheringData_View {
 
 	// resets the text field 
 	void resetKingdomTextfield();
+	
+	// updating the label of the kingdom number from the data in the model
+	void updateKingdomNumberLabel(String kingdomNumber);
+	
+	void setKingdom(EventHandler<ActionEvent> event);
 }

@@ -27,7 +27,8 @@ public interface Command {
 	// GathringDataScene
 	void setGatheringType(String type);
 	void setGameWindowName(String name);
-	void setKingdom(String kingdomNumber);
+	boolean setKingdom(String kingdomNumber);
+	String getKingdomNumber();
 	
 	// exportExcel
 	void exportEcxelFileForAllStats();

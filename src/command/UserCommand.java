@@ -22,6 +22,10 @@ public class UserCommand {
 		this.sortPlayersList = sortPlayersList;
 	}
 
+	public String getKingdomNumber() {
+		return gatheringDataScene.getKingdomNumber();
+	}
+
 	public void sortPlayersListByT4Kills() {
 		sortPlayersList.sortPlayersListByT4Kills();
 	}
@@ -50,8 +54,8 @@ public class UserCommand {
 		exportExcel.exportEcxelFileForPowerOnly();
 	}
 
-	public void setKingdom(String kingdomNumber) {
-		gatheringDataScene.setKingdom(kingdomNumber);
+	public boolean setKingdom(String kingdomNumber) {
+		return gatheringDataScene.setKingdom(kingdomNumber);
 	}
 
 	public void setGameWindowName(String name) {

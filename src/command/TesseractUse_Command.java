@@ -189,8 +189,15 @@ public class TesseractUse_Command implements Command {
 	}
 	
 	@Override
-	public void setKingdom(String kingdomNumber) {
+	public boolean setKingdom(String kingdomNumber) {
 		// Do nothing
+		return false;
+	}
+	
+	@Override
+	public String getKingdomNumber() {
+		// Do nothing
+		return null;
 	}
 
 	@Override
