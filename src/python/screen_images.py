@@ -28,9 +28,9 @@ def check_image_match(screenshot, template, threshold):
 def screen_grab():
     box = ()
     im = ImageGrab.grab(box)
-    path = "E:\\rok bot data\\bot garbage\\full_snap.png"
+    path = "D:\\rok bot data\\bot garbage\\full_snap.png"
     im.save(path, 'PNG')
-    return cv2.imread('E:\\rok bot data\\bot garbage\\full_snap.png')
+    return cv2.imread('D:\\rok bot data\\bot garbage\\full_snap.png')
 
 def screenshot(win, path, kingdom, rank, name):
     hwnd = win32gui.FindWindow(None, win)
@@ -67,9 +67,9 @@ def screenshot(win, path, kingdom, rank, name):
     saveDC.DeleteDC()
     mfcDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, hwndDC)
-
+    
     if result == 1:
         if rank == "power":
-            im.save(path + "\\" + kingdom  + name + ".png")
+            im.save(path + "\\" + kingdom + name + ".png")
         else:
             im.save(path + "\\" + kingdom + "\\" + str(rank) + name + ".png")

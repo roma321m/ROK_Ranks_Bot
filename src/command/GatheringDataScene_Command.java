@@ -1,10 +1,15 @@
 package command;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
-
+import model.Kingdom;
 import model.Player;
 import model.User;
+import observer.Observable;
 
 public class GatheringDataScene_Command implements Command {
 	private User user;
@@ -14,18 +19,49 @@ public class GatheringDataScene_Command implements Command {
 	}
 
 	@Override
+	public void setPower(Map<String, String> power) {
+		this.user.getKingdom().setPower(power);
+	}
+
+	@Override
+	public void addPlayer(Player p) {
+		this.user.getKingdom().addPlayer(p);
+	}
+
+	@Override
+	public void StartBot(String window, String startGame, String openRanks, String allStats, String lastRank) {
+		Kingdom myKingdom = user.getKingdom();
+		String pathPython = PATH_OF_PYTHON_FILES + "\\bot.py";
+		String[] cmd = new String[9];
+		cmd[0] = "python";
+		cmd[1] = pathPython;
+		cmd[2] = window;
+		cmd[3] = PATH_OF_PIC;
+		cmd[4] = myKingdom.getKingdomPath();
+		cmd[5] = startGame;
+		cmd[6] = openRanks;
+		cmd[7] = allStats;
+		cmd[8] = lastRank;
+		Runtime r = Runtime.getRuntime();
+
+		try {
+			Process p = r.exec(cmd);
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = null;
+			StringBuilder sb = new StringBuilder();
+			while ((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			System.out.println(sb.toString());
+		} catch (IOException e) {
+			System.out.println("bot.py - error");
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public boolean setKingdom(String kingdomNumber) {
 		return user.setKingdom(kingdomNumber);
-	}
-
-	@Override
-	public void setGameWindowName(String name) {
-		user.setGameWindowName(name);
-	}
-
-	@Override
-	public void setGatheringType(String type) {
-		user.setGatherType(type);
 	}
 
 	public String getKingdomNumber() {
@@ -108,10 +144,39 @@ public class GatheringDataScene_Command implements Command {
 	public void sortPlayersListByPower() {
 		// Do nothing
 	}
-	
+
 	@Override
 	public ArrayList<Player> getPlayersList() {
 		// Do nothing
 		return null;
 	}
+
+	@Override
+	public void addListener(Observable ob, String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void removeListener(Observable ob) {
+		// Do nothing
+	}
+
+	@Override
+	public ArrayList<Observable> getListeners() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public HashMap<Long, String> getListenersMap() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public String getThreadType(Observable ob) {
+		// Do nothing
+		return null;
+	}
+
 }

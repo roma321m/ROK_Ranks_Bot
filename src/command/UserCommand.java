@@ -1,8 +1,10 @@
 package command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import model.Player;
+import observer.Observable;
 
 public class UserCommand {
 
@@ -12,15 +14,49 @@ public class UserCommand {
 	Command gatheringDataScene;
 	Command exportExcel;
 	Command sortPlayersList;
+	Command notifyingThread_Command;
 
 	public UserCommand(Command createDir, Command tesseractUse, Command pasteName, Command gatheringDataScene,
-			Command exportExcel, Command sortPlayersList) {
+			Command exportExcel, Command sortPlayersList, Command notifyingThread_Command) {
 		this.createDir = createDir;
 		this.tesseractUse = tesseractUse;
 		this.pasteName = pasteName;
 		this.gatheringDataScene = gatheringDataScene;
 		this.exportExcel = exportExcel;
 		this.sortPlayersList = sortPlayersList;
+		this.notifyingThread_Command = notifyingThread_Command;
+	}
+	
+	public void addListener(Observable ob, String type) {
+		notifyingThread_Command.addListener(ob, type);
+	}
+
+	public void removeListener(Observable ob) {
+		notifyingThread_Command.removeListener(ob);
+	}
+
+	public ArrayList<Observable> getListeners() {
+		return notifyingThread_Command.getListeners();
+	}
+	
+	public HashMap<Long,String> getListenersMap(){
+		return notifyingThread_Command.getListenersMap();
+	}
+	
+	public String getThreadType(Observable ob) {
+		return notifyingThread_Command.getThreadType(ob);
+	}
+	
+	public void addPlayer(Player p) {
+		gatheringDataScene.addPlayer(p);
+	}
+	
+	public void setPower(Map<String, String> power) {
+		gatheringDataScene.setPower(power);
+	}
+	
+	public void startBot(String window, String startGame, String openRanks, String allStats, String lastRank) {
+		gatheringDataScene.StartBot(window, startGame, openRanks, allStats, lastRank);
 	}
 
 	public ArrayList<Player> getPlayersList() {
@@ -61,14 +97,6 @@ public class UserCommand {
 
 	public boolean setKingdom(String kingdomNumber) {
 		return gatheringDataScene.setKingdom(kingdomNumber);
-	}
-
-	public void setGameWindowName(String name) {
-		gatheringDataScene.setGameWindowName(name);
-	}
-
-	public void setGatheringType(String type) {
-		gatheringDataScene.setGatheringType(type);
 	}
 
 	public void createDirForAllStats() {

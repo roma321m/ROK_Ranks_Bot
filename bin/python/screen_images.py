@@ -67,9 +67,9 @@ def screenshot(win, path, kingdom, rank, name):
     saveDC.DeleteDC()
     mfcDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, hwndDC)
-
+    
     if result == 1:
         if rank == "power":
-            im.save(path + "\\" + kingdom  + name + ".png")
+            im.save(path + "\\" + kingdom + name + ".png")
         else:
             im.save(path + "\\" + kingdom + "\\" + str(rank) + name + ".png")

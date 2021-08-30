@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
+import model.User;
 
 public interface GatheringData_View {
 
@@ -14,10 +15,9 @@ public interface GatheringData_View {
 	void buildSceneGatheringData();
 
 	// if the gather type changes in view updating it in the model
-	void typeChange(ChangeListener<Toggle> listener);
+	void allStatsChange(ChangeListener<Toggle> listener);
 
-	// returns the type (in a String format) that is currently selected in the view
-	String getGatherType();
+	String getAllStats();
 
 	// if the gather type changes in view updating it in the model
 	void gameWindowNameChange(ChangeListener<Toggle> listener);
@@ -40,5 +40,21 @@ public interface GatheringData_View {
 	// updating the label of the kingdom number from the data in the model
 	void updateKingdomNumberLabel(String kingdomNumber);
 	
+	// changing the kingdom in the user data into the new one that was typed in the view
 	void setKingdom(EventHandler<ActionEvent> event);
+	
+	// starting the bot script
+	void startTheBot(EventHandler<ActionEvent> event);
+	
+	void startGameChange(ChangeListener<Toggle> listener);
+
+	String getStartGame();
+	
+	void openRanksChange(ChangeListener<Toggle> listener);
+
+	String getOpenRanks();
+	
+	void lastRankChange(ChangeListener<Toggle> listener);
+
+	String getLastRank();
 }

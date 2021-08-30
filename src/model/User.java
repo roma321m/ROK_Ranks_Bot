@@ -1,24 +1,32 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import observer.NotifyingThread;
+import observer.Observable;
+
 public class User {
 	private static User single_instance = null;
 
-	public static final String PATH_OF_PIC = "E:\\rok bot data",
+	public static final String PATH_OF_PIC = "D:\\rok bot data",
 			PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
-	public static final String FULL_STATS = "full", POWER_ONLY = "power";
-	public static final String BLUESTACKS_1 = "BlueStack 1", BLUESTACKS_2 = "BlueStack 2", BLUESTACKS_3 = "BlueStack 3",
-			BLUESTACKS_4 = "BlueStack 4";
+	public static final String YES = "true", NO = "false";
+	public static final String BLUESTACKS_1 = "BlueStacks 1", BLUESTACKS_2 = "BlueStacks 2",
+			BLUESTACKS_3 = "BlueStacks 3", BLUESTACKS_4 = "BlueStacks 4";
+	public static final String DIR = "dir", FULL = "full", POWER = "power", EXCEL = "excel", TO_PLAYERS = "players",
+			TO_MAP_POWER = "map power";
 	public static final int DEFAULT_KINGDOM = 1254;
-	public static final int MAX_KINGDOM_NUMBER = 3000, MIN_KINGDOM_NUMBER = 1001;
+	public static final int MAX_KINGDOM_NUMBER = 3000, MIN_KINGDOM_NUMBER = 1000;
 
-	private String gatherType;
-	private String gameWindowName;
 	private Kingdom myKingdom;
+	private ArrayList<Observable> threads;
+	private HashMap<Long, String> threadsTypeMap;
 
 	private User() {
-		gatherType = FULL_STATS;
-		gameWindowName = BLUESTACKS_2;
 		myKingdom = new Kingdom(DEFAULT_KINGDOM);
+		threads = new ArrayList<Observable>();
+		threadsTypeMap = new HashMap<Long, String>();
 	}
 
 	public static User getInstance() {
@@ -46,22 +54,35 @@ public class User {
 		return myKingdom;
 	}
 
-	public void setGatherType(String type) {
-		if (type.equals(FULL_STATS) || type.equals(POWER_ONLY))
-			gatherType = type;
+	public void addListener(Observable ob, String type) {
+		if (ob instanceof NotifyingThread) {
+			long key = ((NotifyingThread) ob).getId();
+			threadsTypeMap.put(key, type);
+			threads.add(ob);
+		}
 	}
 
-	public String getGatheringType() {
-		return gatherType;
+	public void removeListener(Observable ob) {
+		if (ob instanceof NotifyingThread) {
+			long key = ((NotifyingThread) ob).getId();
+			threadsTypeMap.remove(key);
+			threads.remove(ob);
+		}
 	}
 
-	public void setGameWindowName(String gameWindowName) {
-		if (gameWindowName.equals(BLUESTACKS_1) || gameWindowName.equals(BLUESTACKS_2)
-				|| gameWindowName.equals(BLUESTACKS_3))
-			this.gameWindowName = gameWindowName;
+	public ArrayList<Observable> getListeners() {
+		return threads;
 	}
 
-	public String getGameWindowName() {
-		return gameWindowName;
+	public HashMap<Long, String> getListenersMap() {
+		return threadsTypeMap;
+	}
+
+	public String getThreadType(Observable ob) {
+		if (ob instanceof NotifyingThread) {
+			long key = ((NotifyingThread) ob).getId();
+			return threadsTypeMap.get(key);
+		}
+		return null;
 	}
 }

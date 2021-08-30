@@ -1,49 +1,47 @@
 package command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
-
-import model.Kingdom;
 import model.Player;
 import model.User;
+import observer.Observable;
 
 public class SortPlayersList_Command implements Command {
 
 	private User user;
-	private Kingdom myKingdom;
 
 	public SortPlayersList_Command(User user) {
 		this.user = user;
-		myKingdom = this.user.getKingdom();
 	}
 	
 	public ArrayList<Player> getPlayersList(){
-		return myKingdom.getPlayers();
+		return this.user.getKingdom().getPlayers();
 	}
 
 	@Override
 	public void sortPlayersListByT4Kills() {
-		myKingdom.sortPlayersListByT4Kills();
+		this.user.getKingdom().sortPlayersListByT4Kills();
 	}
 
 	@Override
 	public void sortPlayersListByT5Kills() {
-		myKingdom.sortPlayersListByT5Kills();
+		this.user.getKingdom().sortPlayersListByT5Kills();
 	}
 
 	@Override
 	public void sortPlayersListBydeads() {
-		myKingdom.sortPlayersListBydeads();
+		this.user.getKingdom().sortPlayersListBydeads();
 	}
 
 	@Override
 	public void sortPlayersListByKillPoints() {
-		myKingdom.sortPlayersListByKillPoints();
+		this.user.getKingdom().sortPlayersListByKillPoints();
 	}
 
 	@Override
 	public void sortPlayersListByPower() {
-		myKingdom.sortPlayersByPower();
+		this.user.getKingdom().sortPlayersByPower();
 	}
 	
 	/////////////////////////////////////////////
@@ -81,16 +79,6 @@ public class SortPlayersList_Command implements Command {
 		// Do nothing
 		return null;
 	}
-
-	@Override
-	public void setGatheringType(String type) {
-		// Do nothing
-	}
-
-	@Override
-	public void setGameWindowName(String name) {
-		// Do nothing
-	}
 	
 	@Override
 	public boolean setKingdom(String kingdomNumber) {
@@ -113,5 +101,47 @@ public class SortPlayersList_Command implements Command {
 	public void exportEcxelFileForPowerOnly() {
 		// Do nothing
 	}
+	
+	@Override
+	public void StartBot(String window, String startGame, String openRanks, String allStats, String lastRank) {
+		// Do nothing
+	}
 
+	@Override
+	public void setPower(Map<String, String> power) {
+		// Do nothing 
+	}
+
+	@Override
+	public void addPlayer(Player p) {
+		// Do nothing
+	}
+
+	@Override
+	public void addListener(Observable ob, String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void removeListener(Observable ob) {
+		// Do nothing
+	}
+
+	@Override
+	public ArrayList<Observable> getListeners() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public HashMap<Long, String> getListenersMap() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public String getThreadType(Observable ob) {
+		// Do nothing
+		return null;
+	}
 }

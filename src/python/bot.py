@@ -14,7 +14,7 @@ from crop_ss import crop_ss_1
 from crop_ss import crop_ss_2
 from crop_ss import crop_ss_power
 
-PATH = "E:\\rok bot data\\bot templates\\"
+PATH = "D:\\rok bot data\\bot templates\\"
 
 def start_game():
     screenshot = screen_grab()
@@ -253,7 +253,7 @@ def loop_on_power_ranks(win, path, kingdom, lastRank):
     else:
         r = 110   #(1, 110) = top 654 (1 pic = 6 players)
     for rank in range(1, r):
-        screenshot(win, path, kingdom, "power", "\\"+str(rank))
+        screenshot(win, path, kingdom, "power", "\\" + str(rank))
         if rank%2 == 1:
             scroll(1400, 880, 1400, 183)
         else:
@@ -263,21 +263,21 @@ def loop_on_power_ranks(win, path, kingdom, lastRank):
 
 
 def main(argv):
-    if argv[2] == "true":
-        start_game()
     if argv[3] == "true":
-        open_ranks()
+        start_game()
     if argv[4] == "true":
-        loop_on_players_in_ranks(argv[0], argv[1], argv[2], argv[5])
+        open_ranks()
+    if argv[5] == "true":
+        loop_on_players_in_ranks(argv[0], argv[1], argv[2], int(argv[6]))
     else:
-        loop_on_power_ranks(argv[0], argv[1], "Power - " + argv[2], argv[5])
+        loop_on_power_ranks(argv[0], argv[1], "Power - " + argv[2], int(argv[6]))
     #("BlueStacks 2", "E:\\rok bot data", "Power - k1254  08-08-2021")
 
 
-# input from java: argv[] => [0] = bot.py, [1] = window name, [2] = path, [3] = kingdom, [3] = start game (true/false),
-# [4] = open ranks (true/false), [5] all stats (true/false), [6] = lastRank (300/650)
+# input from java: argv[] => [0] = bot.py, [1] = window name, [2] = path, [3] = kingdom, [4] = start game (true/false),
+# [5] = open ranks (true/false), [6] all stats (true/false), [7] = lastRank (300/650)
 if __name__ == "__main__":
-    if len(sys.argv) == 7:
+    if len(sys.argv) == 8:
         main(sys.argv[1:])
     else:
         print("nothing happened")

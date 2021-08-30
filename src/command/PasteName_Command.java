@@ -6,9 +6,11 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import model.Player;
+import observer.Observable;
 
 public class PasteName_Command implements Command {
 
@@ -63,16 +65,6 @@ public class PasteName_Command implements Command {
 		// Do nothing
 		return null;
 	}
-
-	@Override
-	public void setGatheringType(String type) {
-		// Do nothing
-	}
-
-	@Override
-	public void setGameWindowName(String name) {
-		// Do nothing
-	}
 	
 	@Override
 	public boolean setKingdom(String kingdomNumber) {
@@ -123,6 +115,49 @@ public class PasteName_Command implements Command {
 
 	@Override
 	public ArrayList<Player> getPlayersList() {
+		// Do nothing
+		return null;
+	}
+	
+	@Override
+	public void StartBot(String window, String startGame, String openRanks, String allStats, String lastRank) {
+		// Do nothing
+	}
+	
+	@Override
+	public void setPower(Map<String, String> power) {
+		// Do nothing 
+	}
+	
+	@Override
+	public void addPlayer(Player p) {
+		// Do nothing
+	}
+
+	@Override
+	public void addListener(Observable ob, String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void removeListener(Observable ob) {
+		// Do nothing
+	}
+
+	@Override
+	public ArrayList<Observable> getListeners() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public HashMap<Long, String> getListenersMap() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public String getThreadType(Observable ob) {
 		// Do nothing
 		return null;
 	}

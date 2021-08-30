@@ -6,7 +6,7 @@ import view.View;
 
 public class Main extends Application{
 	/**
-	public static final String PATH_OF_PIC = "E:\\rok bot data";
+	public static final String PATH_OF_PIC = "D:\\rok bot data";
 	public static final String PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
 	public static final String WINDOW_NAME = "BlueStacks 2";
 	public static final String SCREENSHOT_1 = "1", SCREENSHOT_2 = "2";
@@ -28,13 +28,11 @@ public class Main extends Application{
 	
 	/**
 	public static void main(String[] args) {
-		//final int KINGDOM_NUMBER = 1254;
-		//Kingdom kingdom = new Kingdom(KINGDOM_NUMBER);
-
-		//CreateDir_Command createDirCommand = new CreateDir_Command(kingdom);
-		//createDirCommand.createDirForAllStats();
 		Model m = new Model();
-		m.createDirForAllStats();
+		System.out.println(m.getKingdomNumber());
+		m.setKingdom("1401");
+		System.out.println(m.getKingdomNumber());
+		//m.createDirForAllStats();
 	}
 	/**
 		final int KINGDOM_NUMBER = 1254;

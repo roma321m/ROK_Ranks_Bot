@@ -33,11 +33,12 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 	private Stage window;
 	private Scene sceneMain, sceneGatherData, scenePlayersList;
 	private BorderPane bpMain, bpGatherData, bpPlayersList;
-	private RadioButton rbFullStats, rbPowerOnly, rb1, rb2, rb3, rb4;
-	private ToggleGroup tgGatherType, tgBuleStacks;
+	private RadioButton rbFullStats, rbPowerOnly, rb1, rb2, rb3, rb4, rbStartGameTrue, rbStartGameFalse,
+			rbOpenRanksTrue, rbOpenRanksFalse, rbLastRank300, rbLastRank650;
+	private ToggleGroup tgAllStats, tgBlueStacks, tgStartGame, tgOpenRanks, tgLastRank;
 	private TextField tfKingdomNumber;
 	private Label lbKingdomNumber;
-	private Button btSetKingdom, btSortPower, btSortDeads, btSortT4, btSortT5, btSortKillPoits;
+	private Button btSetKingdom, btSortPower, btSortDeads, btSortT4, btSortT5, btSortKillPoits, btStartBot;
 	private ListView<Label> playersList;
 	private Group root;
 
@@ -142,37 +143,69 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 
 	@Override
 	public void defineGlobalGatherData() {
-		tgGatherType = new ToggleGroup();
-		tgBuleStacks = new ToggleGroup();
+		tgAllStats = new ToggleGroup();
 		rbFullStats = new RadioButton("Full Stats");
 		rbFullStats.setFont(new Font(22));
-		rbFullStats.setToggleGroup(tgGatherType);
+		rbFullStats.setToggleGroup(tgAllStats);
 		rbPowerOnly = new RadioButton("Power Only");
 		rbPowerOnly.setFont(new Font(22));
-		rbPowerOnly.setToggleGroup(tgGatherType);
+		rbPowerOnly.setToggleGroup(tgAllStats);
+
+		tgBlueStacks = new ToggleGroup();
 		rb1 = new RadioButton("BlueStacks1");
 		rb1.setFont(new Font(22));
-		rb1.setToggleGroup(tgBuleStacks);
+		rb1.setToggleGroup(tgBlueStacks);
 		rb2 = new RadioButton("BlueStacks2");
 		rb2.setFont(new Font(22));
-		rb2.setToggleGroup(tgBuleStacks);
+		rb2.setToggleGroup(tgBlueStacks);
 		rb3 = new RadioButton("BlueStacks3");
 		rb3.setFont(new Font(22));
-		rb3.setToggleGroup(tgBuleStacks);
+		rb3.setToggleGroup(tgBlueStacks);
 		rb4 = new RadioButton("BlueStacks4");
 		rb4.setFont(new Font(22));
-		rb4.setToggleGroup(tgBuleStacks);
+		rb4.setToggleGroup(tgBlueStacks);
+
+		tgStartGame = new ToggleGroup();
+		rbStartGameTrue = new RadioButton("Yes");
+		rbStartGameTrue.setFont(new Font(22));
+		rbStartGameTrue.setToggleGroup(tgStartGame);
+		rbStartGameFalse = new RadioButton("No");
+		rbStartGameFalse.setFont(new Font(22));
+		rbStartGameFalse.setToggleGroup(tgStartGame);
+
+		tgOpenRanks = new ToggleGroup();
+		rbOpenRanksTrue = new RadioButton("Yes");
+		rbOpenRanksTrue.setFont(new Font(22));
+		rbOpenRanksTrue.setToggleGroup(tgOpenRanks);
+		rbOpenRanksFalse = new RadioButton("No");
+		rbOpenRanksFalse.setFont(new Font(22));
+		rbOpenRanksFalse.setToggleGroup(tgOpenRanks);
+
+		tgLastRank = new ToggleGroup();
+		rbLastRank300 = new RadioButton("300");
+		rbLastRank300.setFont(new Font(22));
+		rbLastRank300.setToggleGroup(tgLastRank);
+		rbLastRank650 = new RadioButton("650");
+		rbLastRank650.setFont(new Font(22));
+		rbLastRank650.setToggleGroup(tgLastRank);
+
 		tfKingdomNumber = new TextField();
 		tfKingdomNumber.setPromptText("ex: 1001");
 		tfKingdomNumber.setPrefSize(350, 40);
 		tfKingdomNumber.setFont(new Font(20));
 		tfKingdomNumber.getText();
+
 		lbKingdomNumber = new Label("0");
 		lbKingdomNumber.setFont(new Font(32));
 		lbKingdomNumber.setTextFill(Color.DARKCYAN);
+
 		btSetKingdom = new Button("Set Kingdom");
 		btSetKingdom.setPrefSize(150, 45);
 		btSetKingdom.setFont(new Font(16));
+
+		btStartBot = new Button("Start the bot");
+		btStartBot.setPrefSize(150, 45);
+		btStartBot.setFont(new Font(16));
 	}
 
 	@Override
@@ -218,6 +251,36 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 		VBox vWindowName = new VBox();
 		vWindowName.getChildren().addAll(lWindowName, hWindowName);
 
+		// 4) last rank
+		Label lbLastRank = new Label("4) last rank?");
+		lbLastRank.setFont(new Font(20));
+		lbLastRank.setTextFill(Color.CADETBLUE);
+		HBox hLastRank = new HBox();
+		hLastRank.getChildren().addAll(rbLastRank300, rbLastRank650);
+		rbLastRank300.setSelected(true);
+		VBox vLastRank = new VBox();
+		vLastRank.getChildren().addAll(lbLastRank, hLastRank);
+
+		// 5) start the game
+		Label lbStartGame = new Label("5) launch Rise of Kingdoms?");
+		lbStartGame.setFont(new Font(20));
+		lbStartGame.setTextFill(Color.CADETBLUE);
+		HBox hStartGame = new HBox();
+		hStartGame.getChildren().addAll(rbStartGameTrue, rbStartGameFalse);
+		rbStartGameFalse.setSelected(true);
+		VBox vStartGame = new VBox();
+		vStartGame.getChildren().addAll(lbStartGame, hStartGame);
+
+		// 6) open ranks game
+		Label lbOpenRanks = new Label("6) Open the ranking window?");
+		lbOpenRanks.setFont(new Font(20));
+		lbOpenRanks.setTextFill(Color.CADETBLUE);
+		HBox hOpenRanks = new HBox();
+		hOpenRanks.getChildren().addAll(rbOpenRanksTrue, rbOpenRanksFalse);
+		rbOpenRanksFalse.setSelected(true);
+		VBox vOpenRanks = new VBox();
+		vOpenRanks.getChildren().addAll(lbOpenRanks, hOpenRanks);
+
 		// back to main menu
 		Button btMainMenu;
 		btMainMenu = new Button("Main Menu");
@@ -229,7 +292,8 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 
 		// Final box
 		VBox vCenter = new VBox();
-		vCenter.getChildren().addAll(hCurrentKingdom, vKingdom, vType, vWindowName, btMainMenu);
+		vCenter.getChildren().addAll(hCurrentKingdom, vKingdom, vType, vWindowName, vLastRank, vStartGame, vOpenRanks,
+				btStartBot, btMainMenu);
 
 		// Defining all the panes
 		StackPane spTop = new StackPane();
@@ -249,21 +313,60 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 	}
 
 	@Override
-	public void typeChange(ChangeListener<Toggle> listener) {
-		tgGatherType.selectedToggleProperty().addListener(listener);
+	public void allStatsChange(ChangeListener<Toggle> listener) {
+		tgAllStats.selectedToggleProperty().addListener(listener);
 	}
 
 	@Override
-	public String getGatherType() {
+	public String getAllStats() {
 		if (rbFullStats.isSelected())
-			return User.FULL_STATS;
+			return User.YES;
 		else
-			return User.POWER_ONLY;
+			return User.NO;
+	}
+
+	@Override
+	public void startGameChange(ChangeListener<Toggle> listener) {
+		tgStartGame.selectedToggleProperty().addListener(listener);
+	}
+
+	@Override
+	public String getStartGame() {
+		if (rbStartGameTrue.isSelected())
+			return User.YES;
+		else
+			return User.NO;
+	}
+
+	@Override
+	public void openRanksChange(ChangeListener<Toggle> listener) {
+		tgOpenRanks.selectedToggleProperty().addListener(listener);
+	}
+
+	@Override
+	public String getOpenRanks() {
+		if (rbOpenRanksTrue.isSelected())
+			return User.YES;
+		else
+			return User.NO;
+	}
+
+	@Override
+	public void lastRankChange(ChangeListener<Toggle> listener) {
+		tgLastRank.selectedToggleProperty().addListener(listener);
+	}
+
+	@Override
+	public String getLastRank() {
+		if (rbLastRank300.isSelected())
+			return "300";
+		else
+			return "650";
 	}
 
 	@Override
 	public void gameWindowNameChange(ChangeListener<Toggle> listener) {
-		tgBuleStacks.selectedToggleProperty().addListener(listener);
+		tgBlueStacks.selectedToggleProperty().addListener(listener);
 	}
 
 	@Override
@@ -308,6 +411,11 @@ public class View implements GatheringData_View, PopUps_View, PlayersList_View {
 	@Override
 	public void setKingdom(EventHandler<ActionEvent> event) {
 		btSetKingdom.setOnAction(event);
+	}
+	
+	@Override
+	public void startTheBot(EventHandler<ActionEvent> event) {
+		btStartBot.setOnAction(event);
 	}
 
 	@Override

@@ -1,17 +1,14 @@
 package command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import model.Player;
+import observer.Observable;
 
 public interface Command {
-	static final String PATH_OF_PIC = "E:\\rok bot data";
+	static final String PATH_OF_PIC = "D:\\rok bot data";
 	static final String PATH_OF_PYTHON_FILES = "C:\\Users\\Roman Michailov\\OneDrive\\ROK Ranks Bot\\ROK_Ranks_Bot\\src\\python";
-	static final String WINDOW_NAME = "BlueStacks 2";
-	static final String SCREENSHOT_1 = "1", SCREENSHOT_2 = "2";
-	static final String BARBS_PIC = "barbs_snap", DEAD_PIC = "dead_snap", HELP_PIC = "helps_snap", ID_PIC = "id_snap",
-			NAME_PIC = "name_snap", POWER_PIC = "power_snap", RSS_A_PIC = "rss_a_snap", RSS_G_PIC = "rss_g_snap",
-			T1_PIC = "t1_snap", T2_PIC = "t2_snap", T3_PIC = "t3_snap", T4_PIC = "t4_snap", T5_PIC = "t5_snap";
 
 	// CreateDir
 	void createDirForAllStats();
@@ -26,10 +23,11 @@ public interface Command {
 	String pasteName();
 	
 	// GathringDataScene
-	void setGatheringType(String type);
-	void setGameWindowName(String name);
 	boolean setKingdom(String kingdomNumber);
 	String getKingdomNumber();
+	void StartBot(String window, String startGame, String openRanks, String allStats, String lastRank);
+	void setPower(Map<String, String> power);
+	void addPlayer(Player p);
 	
 	// exportExcel
 	void exportEcxelFileForAllStats();
@@ -42,4 +40,11 @@ public interface Command {
 	void sortPlayersListByKillPoints();
 	void sortPlayersListByPower();
 	ArrayList<Player> getPlayersList();
+	
+	// notifyingThread
+	void addListener(Observable ob, String type);
+	void removeListener(Observable ob);
+	ArrayList<Observable> getListeners();
+	HashMap<Long,String> getListenersMap();
+	String getThreadType(Observable ob);
 }

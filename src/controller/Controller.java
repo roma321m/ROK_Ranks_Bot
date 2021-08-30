@@ -1,10 +1,7 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Toggle;
 import model.Model;
 import model.User;
 import view.View;
@@ -92,28 +89,19 @@ public class Controller {
 		};
 		theView.sortByT5(eventSortByT5Kills);
 
-		// changing the type in the model base on the selection in the view
-		ChangeListener<Toggle> gatherTypeChangeListener = new ChangeListener<Toggle>() {
+		// Start the bot
+		EventHandler<ActionEvent> eventStartBot = new EventHandler<ActionEvent>() {
 			@Override
-			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-				// 1.get the new type that is selected from the view
-				String type = theView.getGatherType();
-				// 2.update model
-				theModel.updateGatheringType(type);
+			public void handle(ActionEvent event) {
+				String windowName =  theView.getGameWindowName();
+				String startGame = theView.getStartGame();
+				String openRanks = theView.getOpenRanks();
+				String allStats = theView.getAllStats();
+				String lastRank = theView.getLastRank();
+				theModel.startBot(windowName, startGame, openRanks, allStats, lastRank);
 			}
 		};
-		theView.typeChange(gatherTypeChangeListener);
+		theView.startTheBot(eventStartBot);
 
-		// changing the game window name in the model base on the selection in the view
-		ChangeListener<Toggle> gameWindowNameChangeListener = new ChangeListener<Toggle>() {
-			@Override
-			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-				// 1.get the new type that is selected from the view
-				String name = theView.getGameWindowName();
-				// 2.update model
-				theModel.updateGameWindowName(name);
-			}
-		};
-		theView.gameWindowNameChange(gameWindowNameChangeListener);
 	}
 }

@@ -7,21 +7,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import model.Kingdom;
 import model.Player;
 import model.User;
+import observer.Observable;
 
 public class TesseractUse_Command implements Command {
 
 	private User user;
-	private Kingdom myKingdom;
 
 	public TesseractUse_Command(User user) {
 		this.user = user;
-		myKingdom = this.user.getKingdom();
 	}
 
 	@Override
@@ -29,7 +27,7 @@ public class TesseractUse_Command implements Command {
 		Player p = new Player();
 		String name = "";
 		try (FileInputStream fis = new FileInputStream(
-				new File(PATH_OF_PIC + "\\" + myKingdom.getKingdomPath() + "\\" + rank + "\\playerName.txt"));
+				new File(PATH_OF_PIC + "\\" + this.user.getKingdom().getKingdomPath() + "\\" + rank + "\\playerName.txt"));
 				InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 				BufferedReader reader = new BufferedReader(isr)) {
 
@@ -45,7 +43,7 @@ public class TesseractUse_Command implements Command {
 
 		p.setName(name);
 
-		String str = textFromPic(myKingdom.getKingdomPath(), rank);
+		String str = textFromPic(this.user.getKingdom().getKingdomPath(), rank);
 		String lines[] = str.split("\\r?\\n");
 		for (int i = 1; i < lines.length; i++) {
 			lines[i] = lines[i].substring(1);
@@ -80,7 +78,7 @@ public class TesseractUse_Command implements Command {
 	@Override
 	public Map<String, String> convertToMapOfPowers(int endRank) {
 		Map<String, String> power = new LinkedHashMap<String, String>();
-		String str = powerFromPic(myKingdom.getKingdomPath(), endRank);
+		String str = powerFromPic(this.user.getKingdom().getKingdomPath(), endRank);
 		String lines[] = str.split("\\r?\\n");
 		for (int i = 1; i < lines.length; i++) {
 			lines[i] = lines[i].substring(1);
@@ -178,16 +176,6 @@ public class TesseractUse_Command implements Command {
 		// Do nothing
 		return null;
 	}
-
-	@Override
-	public void setGatheringType(String type) {
-		// Do nothing 
-	}
-
-	@Override
-	public void setGameWindowName(String name) {
-		// Do nothing
-	}
 	
 	@Override
 	public boolean setKingdom(String kingdomNumber) {
@@ -238,6 +226,49 @@ public class TesseractUse_Command implements Command {
 
 	@Override
 	public ArrayList<Player> getPlayersList() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public void StartBot(String window, String startGame, String openRanks, String allStats, String lastRank) {
+		// Do nothing
+	}
+
+	@Override
+	public void setPower(Map<String, String> power) {
+		// Do nothing
+	}
+
+	@Override
+	public void addPlayer(Player p) {
+		// Do nothing
+	}
+
+	@Override
+	public void addListener(Observable ob, String type) {
+		// Do nothing
+	}
+
+	@Override
+	public void removeListener(Observable ob) {
+		// Do nothing
+	}
+
+	@Override
+	public ArrayList<Observable> getListeners() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public HashMap<Long, String> getListenersMap() {
+		// Do nothing
+		return null;
+	}
+
+	@Override
+	public String getThreadType(Observable ob) {
 		// Do nothing
 		return null;
 	}
