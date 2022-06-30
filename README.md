@@ -6,6 +6,6 @@ This tool will provide kingdom power status base on top rankings (300/650),
 As well as kingdom stats (power, kills - all types, deads, RSS assistants, RSS gathering, helps, barbarian kills) alongside the player's name and the player ID. 
 
 Future goals:
-- site that continues all the data gathered, for players around the world.
-- provide daily imperium kingdoms power updates.
-- provide kingdoms stats based on demand 
+- A site that contains all the gathered data of players and kingdoms from around the world.
+- To provide a daily scan of imperium kingdoms for the total power only.
+- To provide a full kingdom stats with individual stats based on demand 
