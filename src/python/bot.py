@@ -112,7 +112,7 @@ def loop_on_players_in_ranks(win, path, kingdom, lastRank):
 
         # check if ranking screen on
         count = 0
-        while(count < 100): # 20 sec max waiting before break
+        while(count < 20): # 5 sec max waiting before break
             time.sleep(.2)
             snap = screen_grab()
             x, y = check_image_match(snap, individualPowerPic, .8)
@@ -124,7 +124,7 @@ def loop_on_players_in_ranks(win, path, kingdom, lastRank):
                 print("error found\n")
                 break
             count += 1
-        if count == 100:
+        if count == 20:
             break
         # click on the player in rank position
         mouse_pos(950, rank_y)
@@ -132,7 +132,7 @@ def loop_on_players_in_ranks(win, path, kingdom, lastRank):
 
         # check if gov profile screen on
         count = 0
-        while(count < 100): # 20 sec max waiting before break
+        while(count < 20): # 5 sec max waiting before break
             time.sleep(.2)
             snap = screen_grab()
             x, y = check_image_match(snap, govProfile, .6)
@@ -144,11 +144,11 @@ def loop_on_players_in_ranks(win, path, kingdom, lastRank):
                 print("error found\n")
                 break
             count += 1
-        if count == 100:
+        if count == 20:
             mouse_pos(950, 830) # point of the next rank
             left_click()
             count = 0
-            while(count < 100): # 20 sec max waiting before break
+            while(count < 20): # 5 sec max waiting before break
                 time.sleep(.2)
                 snap = screen_grab()
                 x, y = check_image_match(snap, govProfile, .6)
@@ -160,7 +160,7 @@ def loop_on_players_in_ranks(win, path, kingdom, lastRank):
                     print("error found\n")
                     break
                 count += 1
-            if count == 100:
+            if count == 20:
                 print("error on opening a gov profile")
                 break
         # click kill points

@@ -8,7 +8,7 @@ def crop_ss_1(path, kingdom, rank):
     path += kingdom + rank
 
     image = Image.open(path + image_name)
-    id_snap = image.crop((915, 300, 1070, 330))
+    id_snap = image.crop((915, 290, 1070, 325))
     id_snap.save(path + "\\id_snap.png")
     preprocess(path , "\\id_snap.png", False)
     t1_snap = image.crop((1017, 690, 1200, 730))
@@ -46,13 +46,13 @@ def crop_ss_2(path, kingdom, rank):
     dead_snap = image.crop((1300, 530, 1520, 570))
     dead_snap.save(path + "\\dead_snap.png")
     preprocess(path , "\\dead_snap.png", False)
-    rss_g_snap = image.crop((1300, 720, 1520, 760))
+    rss_g_snap = image.crop((1300, 710, 1520, 760))
     rss_g_snap.save(path + "\\rss_g_snap.png")
     preprocess(path , "\\rss_g_snap.png", False)
-    rss_a_snap = image.crop((1300, 790, 1520, 830))
+    rss_a_snap = image.crop((1300, 780, 1520, 830))
     rss_a_snap.save(path + "\\rss_a_snap.png")
     preprocess(path , "\\rss_a_snap.png", False)
-    helps_snap = image.crop((1300, 860, 1520, 900))
+    helps_snap = image.crop((1300, 850, 1520, 890))
     helps_snap.save(path + "\\helps_snap.png")
     preprocess(path , "\\helps_snap.png", False)
 
