@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Readme Pictures"/>
 	<classpathentry kind="lib" path="D:/rok bot data/java mongo/mongo-java-driver-3.12.9.jar"/>
 	<classpathentry kind="lib" path="D:/rok bot data/java poi-5.0.0/commons-codec-1.15.jar"/>
 	<classpathentry kind="lib" path="D:/rok bot data/java poi-5.0.0/commons-collections4-4.4.jar"/>
