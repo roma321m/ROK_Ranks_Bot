@@ -2,10 +2,12 @@ package navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Scanner
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import util.Constants.HOME_SCREEN
+import util.Constants.INFO_SCREEN
 import util.Constants.SCAN_SCREEN
 import util.Constants.SETTINGS_SCREEN
 
@@ -24,5 +26,9 @@ enum class Screens(
     SettingsScreen(
         label = SETTINGS_SCREEN,
         icon = Icons.Filled.Settings
+    ),
+    InfoScreen(
+        label = INFO_SCREEN,
+        icon = Icons.Filled.Info
     )
 }

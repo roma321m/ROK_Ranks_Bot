@@ -1,6 +1,10 @@
 package ui.theme
 
+import androidx.compose.material.Colors
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.graphics.Color.Companion.LightGray
 
 val primaryColor =  Color(0xFF4ff46b)
 val primaryLightColor =  Color(0xFF8cff9c)
@@ -15,3 +19,11 @@ val LowPriorityColor = Color(0xFF00C980)
 val MediumPriorityColor = Color(0xFFFFC114)
 val HighPriorityColor = Color(0xFFFF4646)
 val NonePriorityColor = Color(0xFFFFFFFF)
+
+val Colors.topAppBarContentColor: Color
+    @Composable
+    get() = if (isLight) DarkGray else LightGray
+
+val Colors.topAppBarBackgroundColor: Color
+    @Composable
+    get() = if (isLight) primaryColor else primaryDarkColor

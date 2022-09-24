@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import navigation.NavController
 import ui.screens.scan.app_bar.ScanAppBar
 import ui.screens.scan.content.ScanContent
+import ui.util.ScanAppBarState
 import ui.view_models.ScanViewModel
 
 @Composable
@@ -17,6 +18,9 @@ fun ScanScreen(
     navController: NavController,
     scanViewModel: ScanViewModel
 ) {
+
+    val scanAppBarState: ScanAppBarState = scanViewModel.scanAppBarState
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -26,12 +30,14 @@ fun ScanScreen(
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 ScanAppBar(
-                    scanViewModel = scanViewModel
+                    onPlayerStatsClicked = { scanViewModel.updateScanAppBarState(ScanAppBarState.PLAYER_STATS) },
+                    onKingdomPowerClicked = { scanViewModel.updateScanAppBarState(ScanAppBarState.KINGDOM_POWER) },
+                    onKingdomKillPointsClicked = { scanViewModel.updateScanAppBarState(ScanAppBarState.KINGDOM_KILL_POINTS) }
                 )
             }, content = {
                 ScanContent(
-                    navController = navController,
-                    scanViewModel = scanViewModel
+                    scanViewModel = scanViewModel,
+                    scanAppBarState = scanAppBarState
                 )
             })
     }

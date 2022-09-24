@@ -2,6 +2,7 @@ package navigation
 
 import androidx.compose.runtime.Composable
 import ui.screens.home.HomeScreen
+import ui.screens.info.InfoScreen
 import ui.screens.scan.ScanScreen
 import ui.screens.settings.SettingsScreen
 import ui.view_models.ScanViewModel
@@ -61,6 +62,12 @@ fun CustomNavigationHost(
             ScanScreen(
                 navController = navController,
                 scanViewModel = scanViewModel
+            )
+        }
+
+        composable(Screens.InfoScreen.name) {
+            InfoScreen(
+                navController = navController
             )
         }
 
