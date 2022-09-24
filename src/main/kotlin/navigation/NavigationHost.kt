@@ -2,8 +2,10 @@ package navigation
 
 import androidx.compose.runtime.Composable
 import ui.screens.home.HomeScreen
+import ui.screens.scan.ScanScreen
 import ui.screens.settings.SettingsScreen
-import ui.view_models.SharedViewModel
+import ui.view_models.ScanViewModel
+import ui.view_models.SettingsViewModel
 
 class NavigationHost (
     val navController: NavController,
@@ -38,15 +40,28 @@ fun NavigationHost.NavigationGraphBuilder.composable (
 @Composable
 fun CustomNavigationHost(
     navController: NavController,
-    sharedViewModel: SharedViewModel
+    settingsViewModel: SettingsViewModel,
+    scanViewModel: ScanViewModel
 ) {
     NavigationHost(navController) {
         composable(Screens.HomeScreen.name) {
-            HomeScreen(navController)
+            HomeScreen(
+                navController = navController
+            )
         }
 
         composable(Screens.SettingsScreen.name) {
-            SettingsScreen(navController, sharedViewModel)
+            SettingsScreen(
+                navController = navController,
+                settingsViewModel = settingsViewModel
+            )
+        }
+
+        composable(Screens.ScanScreen.name) {
+            ScanScreen(
+                navController = navController,
+                scanViewModel = scanViewModel
+            )
         }
 
     }.Build()

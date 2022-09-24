@@ -1,4 +1,3 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
@@ -14,13 +13,15 @@ import ui.theme.RokRanksBotApp
 import ui.theme.WINDOW_HEIGHT
 import ui.theme.WINDOW_WIDTH
 import ui.util.Mode
-import ui.view_models.SharedViewModel
+import ui.view_models.ScanViewModel
+import ui.view_models.SettingsViewModel
 import util.Constants.APP_ICON
 import util.Constants.APP_TITLE
 
 fun main() = application {
 
-    val sharedViewModel = SharedViewModel()
+    val settingsViewModel = SettingsViewModel()
+    val scanViewModel = ScanViewModel()
     val navController by rememberNavController(Screens.HomeScreen.name)
 
     Window(
@@ -34,13 +35,17 @@ fun main() = application {
         )
     ) {
         RokRanksBotApp(
-            darkTheme = if (sharedViewModel.mode == Mode.SYSTEM) isSystemInDarkTheme()
-            else sharedViewModel.mode == Mode.DARK
+            darkTheme = if (settingsViewModel.mode == Mode.SYSTEM) isSystemInDarkTheme()
+            else settingsViewModel.mode == Mode.DARK
         ) {
             Surface(
                 modifier = Modifier.background(color = MaterialTheme.colors.background)
             ) {
-                App(navController, sharedViewModel)
+                App(
+                    navController = navController,
+                    settingsViewModel = settingsViewModel,
+                    scanViewModel = scanViewModel
+                )
             }
         }
     }
@@ -49,16 +54,12 @@ fun main() = application {
 @Composable
 fun App(
     navController: NavController,
-    sharedViewModel: SharedViewModel
+    settingsViewModel: SettingsViewModel,
+    scanViewModel: ScanViewModel
 ) {
     SetupNavigation(
         navController,
-        sharedViewModel
+        settingsViewModel,
+        scanViewModel
     )
-}
-
-@Composable
-@Preview
-fun AppPreview() {
-
 }

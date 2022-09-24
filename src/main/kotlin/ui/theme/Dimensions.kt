@@ -2,8 +2,8 @@ package ui.theme
 
 import androidx.compose.ui.unit.dp
 
-val WINDOW_HEIGHT = 500.dp
-val WINDOW_WIDTH = 500.dp
+val WINDOW_HEIGHT = 750.dp
+val WINDOW_WIDTH = 900.dp
 
 val LARGEST_PADDING = 24.dp
 val LARGE_PADDING = 12.dp

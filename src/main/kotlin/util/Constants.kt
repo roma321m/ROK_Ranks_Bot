@@ -7,6 +7,7 @@ object Constants {
 
     const val HOME_SCREEN = "home"
     const val SETTINGS_SCREEN = "settings"
+    const val SCAN_SCREEN = "scan"
 
     const val IMAGE_TYPE = ".png"
 }

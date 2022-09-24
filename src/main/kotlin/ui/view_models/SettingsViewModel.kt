@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import ui.util.Mode
 
-class SharedViewModel {
+class SettingsViewModel {
 
     var mode by mutableStateOf(Mode.SYSTEM)
         private set

@@ -19,6 +19,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
+    implementation("org.jetbrains.compose.material:material-icons-extended-desktop:1.1.0")
 }
 
 tasks.test {

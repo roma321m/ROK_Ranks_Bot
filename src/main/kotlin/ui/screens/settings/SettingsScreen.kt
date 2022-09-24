@@ -10,12 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import navigation.NavController
 import ui.util.Mode
-import ui.view_models.SharedViewModel
+import ui.view_models.SettingsViewModel
 
 @Composable
 fun SettingsScreen(
     navController: NavController,
-    sharedViewModel: SharedViewModel
+    settingsViewModel: SettingsViewModel
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -26,13 +26,13 @@ fun SettingsScreen(
         Text(navController.currentScreen.value)
 
         // Todo - radio button
-        Button(onClick = { sharedViewModel.updateMode(Mode.DARK) }) {
+        Button(onClick = { settingsViewModel.updateMode(Mode.DARK) }) {
             Text("dark")
         }
-        Button(onClick = { sharedViewModel.updateMode(Mode.LIGHT) }) {
+        Button(onClick = { settingsViewModel.updateMode(Mode.LIGHT) }) {
             Text("light")
         }
-        Button(onClick = { sharedViewModel.updateMode(Mode.SYSTEM) }) {
+        Button(onClick = { settingsViewModel.updateMode(Mode.SYSTEM) }) {
             Text("system")
         }
     }
