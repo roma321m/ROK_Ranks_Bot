@@ -2,7 +2,9 @@ package util
 
 object Constants {
 
-    const val DATABASE_TABLE = "rok_ranks_table"
-    const val DATABASE_NAME = "rok_ranks_database"
+    const val APP_ICON = "game logo.png"
+    const val APP_TITLE = "ROK Ranks Bot"
 
+    const val HOME_SCREEN = "home"
+    const val SETTINGS_SCREEN = "settings"
 }
