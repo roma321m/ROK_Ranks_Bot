@@ -15,10 +15,9 @@ val secondaryLightColor =  Color(0xFFc158dc)
 val secondaryDarkColor =  Color(0xFF5c007a)
 val secondaryTextColor =  Color(0xFFffffff)
 
-val LowPriorityColor = Color(0xFF00C980)
-val MediumPriorityColor = Color(0xFFFFC114)
-val HighPriorityColor = Color(0xFFFF4646)
-val NonePriorityColor = Color(0xFFFFFFFF)
+val GreenColor = Color(0xFF00C980)
+val YellowColor = Color(0xFFFFC114)
+val RedColor = Color(0xFFFF4646)
 
 val Colors.topAppBarContentColor: Color
     @Composable

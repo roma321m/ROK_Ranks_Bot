@@ -1,40 +1,38 @@
 package ui.screens.scan.content
 
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import ui.util.ScanAppBarState
-import ui.view_models.ScanViewModel
 
 @Composable
 fun ScanContent(
-    scanViewModel: ScanViewModel,
-    scanAppBarState: ScanAppBarState
+    scanAppBarState: ScanAppBarState,
+    onStartKingdomPowerClick: () -> Unit,
+    onStartPlayerStatsClick: () -> Unit,
+    onStartKingdomKillPointsClick: () -> Unit,
+    onAbortKingdomPowerClick: () -> Unit,
+    onAbortPlayerStatsClick: () -> Unit,
+    onAbortKingdomKillPointsClick: () -> Unit,
 ) {
     when (scanAppBarState) {
         ScanAppBarState.KINGDOM_POWER -> {
-            KingdomPowerContent()
+            KingdomPowerContent(
+                onStartClick = onStartKingdomPowerClick,
+                onAbortClick = onAbortKingdomPowerClick
+            )
         }
+
         ScanAppBarState.PLAYER_STATS -> {
-            PlayerStatsContent()
+            PlayerStatsContent(
+                onStartClick = onStartPlayerStatsClick,
+                onAbortClick = onAbortPlayerStatsClick
+            )
         }
+
         ScanAppBarState.KINGDOM_KILL_POINTS -> {
-            KingdomKillPointsContent()
+            KingdomKillPointsContent(
+                onStartClick = onStartKingdomKillPointsClick,
+                onAbortClick = onAbortKingdomKillPointsClick
+            )
         }
     }
-}
-
-@Composable
-fun KingdomPowerContent() {
-    Text("KingdomPowerContent")
-}
-
-@Composable
-fun KingdomKillPointsContent() {
-    Text("KingdomKillPointsContent")
-}
-
-@Composable
-fun PlayerStatsContent() {
-    Text("PlayerStatsContent")
 }

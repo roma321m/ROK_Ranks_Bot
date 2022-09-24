@@ -34,10 +34,28 @@ fun ScanScreen(
                     onKingdomPowerClicked = { scanViewModel.updateScanAppBarState(ScanAppBarState.KINGDOM_POWER) },
                     onKingdomKillPointsClicked = { scanViewModel.updateScanAppBarState(ScanAppBarState.KINGDOM_KILL_POINTS) }
                 )
-            }, content = {
+            },
+            content = {
                 ScanContent(
-                    scanViewModel = scanViewModel,
-                    scanAppBarState = scanAppBarState
+                    scanAppBarState = scanAppBarState,
+                    onAbortKingdomKillPointsClick = {
+                        scanViewModel.abortKingdomKillPoints()
+                    },
+                    onAbortKingdomPowerClick = {
+                        scanViewModel.abortKingdomPower()
+                    },
+                    onAbortPlayerStatsClick = {
+                        scanViewModel.abortPlayerStats()
+                    },
+                    onStartKingdomKillPointsClick = {
+                        scanViewModel.startKingdomKillPoints()
+                    },
+                    onStartKingdomPowerClick = {
+                        scanViewModel.startKingdomPower()
+                    },
+                    onStartPlayerStatsClick = {
+                        scanViewModel.startPlayerStats()
+                    }
                 )
             })
     }
