@@ -20,6 +20,12 @@ fun ScanScreen(
 ) {
 
     val scanAppBarState: ScanAppBarState = scanViewModel.scanAppBarState
+    val isT1Checked: Boolean = scanViewModel.isT1Checked
+    val isT2Checked: Boolean = scanViewModel.isT2Checked
+    val isT3Checked: Boolean = scanViewModel.isT3Checked
+    val isT4Checked: Boolean = scanViewModel.isT4Checked
+    val isT5Checked: Boolean = scanViewModel.isT5Checked
+    // todo - add all check box stats
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -38,6 +44,27 @@ fun ScanScreen(
             content = {
                 ScanContent(
                     scanAppBarState = scanAppBarState,
+                    isT1Checked = isT1Checked,
+                    onT1CheckedChange = {
+                          scanViewModel.updateT1Checked()
+                    },
+                    isT2Checked = isT2Checked,
+                    onT2CheckedChange = {
+                        scanViewModel.updateT2Checked()
+                    },
+                    isT3Checked = isT3Checked,
+                    onT3CheckedChange = {
+                        scanViewModel.updateT3Checked()
+                    },
+                    isT4Checked = isT4Checked,
+                    onT4CheckedChange = {
+                        scanViewModel.updateT4Checked()
+                    },
+                    isT5Checked = isT5Checked,
+                    onT5CheckedChange = {
+                        scanViewModel.updateT5Checked()
+                    },
+                    // todo - add all check box stats
                     onAbortKingdomKillPointsClick = {
                         scanViewModel.abortKingdomKillPoints()
                     },

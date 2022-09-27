@@ -5,6 +5,17 @@ import ui.util.ScanAppBarState
 
 @Composable
 fun ScanContent(
+    isT1Checked: Boolean,
+    onT1CheckedChange: () -> Unit,
+    isT2Checked: Boolean,
+    onT2CheckedChange: () -> Unit,
+    isT3Checked: Boolean,
+    onT3CheckedChange: () -> Unit,
+    isT4Checked: Boolean,
+    onT4CheckedChange: () -> Unit,
+    isT5Checked: Boolean,
+    onT5CheckedChange: () -> Unit,
+    // todo - add all check box stats
     scanAppBarState: ScanAppBarState,
     onStartKingdomPowerClick: () -> Unit,
     onStartPlayerStatsClick: () -> Unit,
@@ -24,7 +35,17 @@ fun ScanContent(
         ScanAppBarState.PLAYER_STATS -> {
             PlayerStatsContent(
                 onStartClick = onStartPlayerStatsClick,
-                onAbortClick = onAbortPlayerStatsClick
+                onAbortClick = onAbortPlayerStatsClick,
+                isT1Checked = isT1Checked,
+                onT1CheckedChange = onT1CheckedChange,
+                isT2Checked = isT2Checked,
+                onT2CheckedChange = onT2CheckedChange,
+                isT3Checked = isT3Checked,
+                onT3CheckedChange = onT3CheckedChange,
+                isT4Checked = isT4Checked,
+                onT4CheckedChange = onT4CheckedChange,
+                isT5Checked = isT5Checked,
+                onT5CheckedChange = onT5CheckedChange,
             )
         }
 
