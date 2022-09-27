@@ -12,7 +12,7 @@ import navigation.*
 import ui.theme.RokRanksBotApp
 import ui.theme.WINDOW_HEIGHT
 import ui.theme.WINDOW_WIDTH
-import ui.theme.stringResources
+import ui.theme.strings.stringResources
 import ui.util.Mode
 import ui.view_models.ScanViewModel
 import ui.view_models.SettingsViewModel

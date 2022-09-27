@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import ui.theme.stringResources
+import ui.theme.strings.stringResources
 import ui.view_models.ScanViewModel
 import ui.view_models.SettingsViewModel
 import util.Constants.HOME_SCREEN

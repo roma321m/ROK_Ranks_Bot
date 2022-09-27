@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import ui.theme.PLAYER_STATS_CHECK_TABLE_WIDTH
 import ui.theme.spacing
-import ui.theme.stringResources
+import ui.theme.strings.stringResources
 
 @Composable
 fun PlayerStatsContent(
