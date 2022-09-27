@@ -12,11 +12,11 @@ import navigation.*
 import ui.theme.RokRanksBotApp
 import ui.theme.WINDOW_HEIGHT
 import ui.theme.WINDOW_WIDTH
+import ui.theme.stringResources
 import ui.util.Mode
 import ui.view_models.ScanViewModel
 import ui.view_models.SettingsViewModel
 import util.Constants.APP_ICON
-import util.Constants.APP_TITLE
 
 fun main() = application {
 
@@ -27,7 +27,7 @@ fun main() = application {
     Window(
         resizable = false,
         onCloseRequest = ::exitApplication,
-        title = APP_TITLE,
+        title = MaterialTheme.stringResources.appName,
         icon = painterResource(APP_ICON),
         state = rememberWindowState(
             width = WINDOW_WIDTH,

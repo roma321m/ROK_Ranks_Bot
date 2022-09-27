@@ -14,6 +14,34 @@ class ScanViewModel {
         scanAppBarState = newState
     }
 
+    var isNameChecked by mutableStateOf(true)
+        private set
+
+    fun updateNameChecked() {
+        isNameChecked = !isNameChecked
+    }
+
+    var isPowerChecked by mutableStateOf(true)
+        private set
+
+    fun updatePowerChecked() {
+        isPowerChecked = !isPowerChecked
+    }
+
+    var isDeadTroopsChecked by mutableStateOf(true)
+        private set
+
+    fun updateDeadTroopsChecked() {
+        isDeadTroopsChecked = !isDeadTroopsChecked
+    }
+
+    var isIdChecked by mutableStateOf(true)
+        private set
+
+    fun updateIdChecked() {
+        isIdChecked = !isIdChecked
+    }
+
     var isT1Checked by mutableStateOf(false)
         private set
 
@@ -38,7 +66,7 @@ class ScanViewModel {
     }
 
 
-    var isT4Checked by mutableStateOf(false)
+    var isT4Checked by mutableStateOf(true)
         private set
 
     fun updateT4Checked() {
@@ -46,11 +74,32 @@ class ScanViewModel {
     }
 
 
-    var isT5Checked by mutableStateOf(false)
+    var isT5Checked by mutableStateOf(true)
         private set
 
     fun updateT5Checked() {
         isT5Checked = !isT5Checked
+    }
+
+    var isRSSAssistantsChecked by mutableStateOf(false)
+        private set
+
+    fun updateRSSAssistantsChecked() {
+        isRSSAssistantsChecked = !isRSSAssistantsChecked
+    }
+
+    var isRSSGatheredChecked by mutableStateOf(false)
+        private set
+
+    fun updateRSSGatheredChecked() {
+        isRSSGatheredChecked = !isRSSGatheredChecked
+    }
+
+    var isAllianceHelpsChecked by mutableStateOf(false)
+        private set
+
+    fun updateAllianceHelpsChecked() {
+        isAllianceHelpsChecked = !isAllianceHelpsChecked
     }
 
     fun startPlayerStats() {

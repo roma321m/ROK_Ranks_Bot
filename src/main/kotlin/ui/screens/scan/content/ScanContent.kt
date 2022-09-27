@@ -5,6 +5,14 @@ import ui.util.ScanAppBarState
 
 @Composable
 fun ScanContent(
+    isIdChecked: Boolean,
+    onIdCheckedChange: () -> Unit,
+    isNameChecked: Boolean,
+    onNameCheckedChange: () -> Unit,
+    isPowerChecked: Boolean,
+    onPowerCheckedChange: () -> Unit,
+    isDeadTroopsChecked: Boolean,
+    onDeadTroopsCheckedChange: () -> Unit,
     isT1Checked: Boolean,
     onT1CheckedChange: () -> Unit,
     isT2Checked: Boolean,
@@ -15,7 +23,12 @@ fun ScanContent(
     onT4CheckedChange: () -> Unit,
     isT5Checked: Boolean,
     onT5CheckedChange: () -> Unit,
-    // todo - add all check box stats
+    isRSSAssistantsChecked: Boolean,
+    onRSSAssistantsCheckedChange: () -> Unit,
+    isRSSGatheredChecked: Boolean,
+    onRSSGatheredCheckedChange: () -> Unit,
+    isAllianceHelpsChecked: Boolean,
+    onAllianceHelpsCheckedChange: () -> Unit,
     scanAppBarState: ScanAppBarState,
     onStartKingdomPowerClick: () -> Unit,
     onStartPlayerStatsClick: () -> Unit,
@@ -36,6 +49,14 @@ fun ScanContent(
             PlayerStatsContent(
                 onStartClick = onStartPlayerStatsClick,
                 onAbortClick = onAbortPlayerStatsClick,
+                isIdChecked = isIdChecked,
+                onIdCheckedChange = onIdCheckedChange,
+                isNameChecked = isNameChecked,
+                onNameCheckedChange = onNameCheckedChange,
+                isPowerChecked = isPowerChecked,
+                onPowerCheckedChange = onPowerCheckedChange,
+                isDeadTroopsChecked = isDeadTroopsChecked,
+                onDeadTroopsCheckedChange = onDeadTroopsCheckedChange,
                 isT1Checked = isT1Checked,
                 onT1CheckedChange = onT1CheckedChange,
                 isT2Checked = isT2Checked,
@@ -46,6 +67,12 @@ fun ScanContent(
                 onT4CheckedChange = onT4CheckedChange,
                 isT5Checked = isT5Checked,
                 onT5CheckedChange = onT5CheckedChange,
+                isRSSAssistantsChecked = isRSSAssistantsChecked,
+                onRSSAssistantsCheckedChange = onRSSAssistantsCheckedChange,
+                isRSSGatheredChecked = isRSSGatheredChecked,
+                onRSSGatheredCheckedChange = onRSSGatheredCheckedChange,
+                isAllianceHelpsChecked = isAllianceHelpsChecked,
+                onAllianceHelpsCheckedChange = onAllianceHelpsCheckedChange,
             )
         }
 

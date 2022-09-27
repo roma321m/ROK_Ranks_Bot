@@ -14,6 +14,14 @@ import ui.theme.spacing
 fun PlayerStatsContent(
     onStartClick: () -> Unit,
     onAbortClick: () -> Unit,
+    isIdChecked: Boolean,
+    onIdCheckedChange: () -> Unit,
+    isNameChecked: Boolean,
+    onNameCheckedChange: () -> Unit,
+    isPowerChecked: Boolean,
+    onPowerCheckedChange: () -> Unit,
+    isDeadTroopsChecked: Boolean,
+    onDeadTroopsCheckedChange: () -> Unit,
     isT1Checked: Boolean,
     onT1CheckedChange: () -> Unit,
     isT2Checked: Boolean,
@@ -24,20 +32,39 @@ fun PlayerStatsContent(
     onT4CheckedChange: () -> Unit,
     isT5Checked: Boolean,
     onT5CheckedChange: () -> Unit,
-    // todo - add all check box stats
+    isRSSAssistantsChecked: Boolean,
+    onRSSAssistantsCheckedChange: () -> Unit,
+    isRSSGatheredChecked: Boolean,
+    onRSSGatheredCheckedChange: () -> Unit,
+    isAllianceHelpsChecked: Boolean,
+    onAllianceHelpsCheckedChange: () -> Unit,
 ) {
     Row {
         PlayerStatsCheckTable(
-            isT1Checked,
-            onT1CheckedChange,
-            isT2Checked,
-            onT2CheckedChange,
-            isT3Checked,
-            onT3CheckedChange,
-            isT4Checked,
-            onT4CheckedChange,
-            isT5Checked,
-            onT5CheckedChange
+            isIdChecked = isIdChecked,
+            onIdCheckedChange = onIdCheckedChange,
+            isNameChecked = isNameChecked,
+            onNameCheckedChange = onNameCheckedChange,
+            isPowerChecked = isPowerChecked,
+            onPowerCheckedChange = onPowerCheckedChange,
+            isDeadTroopsChecked = isDeadTroopsChecked,
+            onDeadTroopsCheckedChange = onDeadTroopsCheckedChange,
+            isT1Checked = isT1Checked,
+            onT1CheckedChange = onT1CheckedChange,
+            isT2Checked = isT2Checked,
+            onT2CheckedChange = onT2CheckedChange,
+            isT3Checked = isT3Checked,
+            onT3CheckedChange = onT3CheckedChange,
+            isT4Checked = isT4Checked,
+            onT4CheckedChange = onT4CheckedChange,
+            isT5Checked = isT5Checked,
+            onT5CheckedChange = onT5CheckedChange,
+            isRSSAssistantsChecked = isRSSAssistantsChecked,
+            onRSSAssistantsCheckedChange = onRSSAssistantsCheckedChange,
+            isRSSGatheredChecked = isRSSGatheredChecked,
+            onRSSGatheredCheckedChange = onRSSGatheredCheckedChange,
+            isAllianceHelpsChecked = isAllianceHelpsChecked,
+            onAllianceHelpsCheckedChange = onAllianceHelpsCheckedChange,
         )
         MutualContent(onStartClick = onStartClick, onAbortClick = onAbortClick)
     }
@@ -45,6 +72,14 @@ fun PlayerStatsContent(
 
 @Composable
 fun PlayerStatsCheckTable(
+    isIdChecked: Boolean,
+    onIdCheckedChange: () -> Unit,
+    isNameChecked: Boolean,
+    onNameCheckedChange: () -> Unit,
+    isPowerChecked: Boolean,
+    onPowerCheckedChange: () -> Unit,
+    isDeadTroopsChecked: Boolean,
+    onDeadTroopsCheckedChange: () -> Unit,
     isT1Checked: Boolean,
     onT1CheckedChange: () -> Unit,
     isT2Checked: Boolean,
@@ -55,6 +90,12 @@ fun PlayerStatsCheckTable(
     onT4CheckedChange: () -> Unit,
     isT5Checked: Boolean,
     onT5CheckedChange: () -> Unit,
+    isRSSAssistantsChecked: Boolean,
+    onRSSAssistantsCheckedChange: () -> Unit,
+    isRSSGatheredChecked: Boolean,
+    onRSSGatheredCheckedChange: () -> Unit,
+    isAllianceHelpsChecked: Boolean,
+    onAllianceHelpsCheckedChange: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -69,23 +110,23 @@ fun PlayerStatsCheckTable(
         )
         PlayerStatsCheckRow(
             text = "Gov ID",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isIdChecked,
+            onCheckedChange = onIdCheckedChange
         )
         PlayerStatsCheckRow(
             text = "Name",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isNameChecked,
+            onCheckedChange = onNameCheckedChange
         )
         PlayerStatsCheckRow(
             text = "Power",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isPowerChecked,
+            onCheckedChange = onPowerCheckedChange
         )
         PlayerStatsCheckRow(
             text = "Dead Troops",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isDeadTroopsChecked,
+            onCheckedChange = onDeadTroopsCheckedChange
         )
         PlayerStatsCheckRow(
             text = "T1 Kills",
@@ -114,18 +155,18 @@ fun PlayerStatsCheckTable(
         )
         PlayerStatsCheckRow(
             text = "RSS Assistants",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isRSSAssistantsChecked,
+            onCheckedChange = onRSSAssistantsCheckedChange
         )
         PlayerStatsCheckRow(
             text = "RSS Gathered",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            isChecked = isRSSGatheredChecked,
+            onCheckedChange = onRSSGatheredCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "Alliance helps",
-            isChecked = isT1Checked, // fixme
-            onCheckedChange = onT1CheckedChange //fixme
+            text = "Alliance Helps",
+            isChecked = isAllianceHelpsChecked,
+            onCheckedChange = onAllianceHelpsCheckedChange
         )
     }
 }

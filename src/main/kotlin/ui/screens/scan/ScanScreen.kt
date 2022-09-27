@@ -7,7 +7,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import navigation.NavController
 import ui.screens.scan.app_bar.ScanAppBar
 import ui.screens.scan.content.ScanContent
 import ui.util.ScanAppBarState
@@ -15,7 +14,6 @@ import ui.view_models.ScanViewModel
 
 @Composable
 fun ScanScreen(
-    navController: NavController,
     scanViewModel: ScanViewModel
 ) {
 
@@ -25,7 +23,13 @@ fun ScanScreen(
     val isT3Checked: Boolean = scanViewModel.isT3Checked
     val isT4Checked: Boolean = scanViewModel.isT4Checked
     val isT5Checked: Boolean = scanViewModel.isT5Checked
-    // todo - add all check box stats
+    val isIdChecked: Boolean = scanViewModel.isIdChecked
+    val isNameChecked: Boolean = scanViewModel.isNameChecked
+    val isPowerChecked: Boolean = scanViewModel.isPowerChecked
+    val isDeadTroopsChecked: Boolean = scanViewModel.isDeadTroopsChecked
+    val isRSSAssistantsChecked: Boolean = scanViewModel.isRSSAssistantsChecked
+    val isRSSGatheredChecked: Boolean = scanViewModel.isRSSGatheredChecked
+    val isAllianceHelpsChecked: Boolean = scanViewModel.isAllianceHelpsChecked
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -44,9 +48,25 @@ fun ScanScreen(
             content = {
                 ScanContent(
                     scanAppBarState = scanAppBarState,
+                    isIdChecked = isIdChecked,
+                    onIdCheckedChange = {
+                        scanViewModel.updateIdChecked()
+                    },
+                    isNameChecked = isNameChecked,
+                    onNameCheckedChange = {
+                        scanViewModel.updateNameChecked()
+                    },
+                    isPowerChecked = isPowerChecked,
+                    onPowerCheckedChange = {
+                        scanViewModel.updatePowerChecked()
+                    },
+                    isDeadTroopsChecked = isDeadTroopsChecked,
+                    onDeadTroopsCheckedChange = {
+                        scanViewModel.updateDeadTroopsChecked()
+                    },
                     isT1Checked = isT1Checked,
                     onT1CheckedChange = {
-                          scanViewModel.updateT1Checked()
+                        scanViewModel.updateT1Checked()
                     },
                     isT2Checked = isT2Checked,
                     onT2CheckedChange = {
@@ -64,7 +84,18 @@ fun ScanScreen(
                     onT5CheckedChange = {
                         scanViewModel.updateT5Checked()
                     },
-                    // todo - add all check box stats
+                    isRSSAssistantsChecked = isRSSAssistantsChecked,
+                    onRSSAssistantsCheckedChange = {
+                        scanViewModel.updateRSSAssistantsChecked()
+                    },
+                    isRSSGatheredChecked = isRSSGatheredChecked,
+                    onRSSGatheredCheckedChange = {
+                        scanViewModel.updateRSSGatheredChecked()
+                    },
+                    isAllianceHelpsChecked = isAllianceHelpsChecked,
+                    onAllianceHelpsCheckedChange = {
+                        scanViewModel.updateAllianceHelpsChecked()
+                    },
                     onAbortKingdomKillPointsClick = {
                         scanViewModel.abortKingdomKillPoints()
                     },

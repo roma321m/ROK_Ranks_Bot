@@ -3,7 +3,6 @@ package util
 object Constants {
 
     const val APP_ICON = "game logo.png"
-    const val APP_TITLE = "ROK Ranks Bot"
 
     const val HOME_SCREEN = "Home"
     const val SETTINGS_SCREEN = "Settings"

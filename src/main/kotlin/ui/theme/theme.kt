@@ -6,6 +6,7 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.text.intl.Locale
 
 val DarkColorPalette = darkColors(
     primary = primaryColor,
@@ -28,9 +29,15 @@ fun RokRanksBotApp(
 ) {
     val colors = if (darkTheme) DarkColorPalette else LightColorPalette
 
+    val stringResources = when (Locale.current.language) {
+        "HE" -> stringResourcesHebrew()
+        else -> stringResourcesEnglish()
+    }
+
     CompositionLocalProvider(
         LocalSpacing provides Spacing(),
-        LocalElevation provides Elevation()
+        LocalElevation provides Elevation(),
+        LocalStringResources provides stringResources
     ) {
         MaterialTheme(
             colors = colors,

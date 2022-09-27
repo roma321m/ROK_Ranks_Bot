@@ -60,7 +60,6 @@ fun CustomNavigationHost(
 
         composable(Screens.ScanScreen.name) {
             ScanScreen(
-                navController = navController,
                 scanViewModel = scanViewModel
             )
         }
