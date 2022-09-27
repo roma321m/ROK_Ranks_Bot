@@ -10,8 +10,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import ui.theme.stringResources
 import ui.view_models.ScanViewModel
 import ui.view_models.SettingsViewModel
+import util.Constants.HOME_SCREEN
+import util.Constants.INFO_SCREEN
+import util.Constants.SCAN_SCREEN
+import util.Constants.SETTINGS_SCREEN
 
 @Composable
 fun SetupNavigation(
@@ -33,16 +38,38 @@ fun SetupNavigation(
                 .fillMaxHeight()
         ) {
             screens.forEach { screen ->
+                val label = when (screen.label) {
+                    HOME_SCREEN -> {
+                        MaterialTheme.stringResources.homeScreen
+                    }
+
+                    SETTINGS_SCREEN -> {
+                        MaterialTheme.stringResources.settingsScreen
+                    }
+
+                    SCAN_SCREEN -> {
+                        MaterialTheme.stringResources.scanScreen
+                    }
+
+                    INFO_SCREEN -> {
+                        MaterialTheme.stringResources.infoScreen
+                    }
+
+                    else -> {
+                        ""
+                    }
+                }
+
                 NavigationRailItem(
                     selected = currentScreen == screen.name,
                     icon = {
                         Icon(
                             imageVector = screen.icon,
-                            contentDescription = screen.label
+                            contentDescription = label
                         )
                     },
                     label = {
-                        Text(screen.label)
+                        Text(label)
                     },
                     alwaysShowLabel = false,
                     onClick = {

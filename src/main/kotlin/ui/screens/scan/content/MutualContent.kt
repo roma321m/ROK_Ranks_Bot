@@ -2,8 +2,10 @@ package ui.screens.scan.content
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import ui.theme.stringResources
 
 @Composable
 fun MutualContent(
@@ -14,12 +16,12 @@ fun MutualContent(
         Button(
             onClick = onStartClick
         ) {
-            Text("Start")
+            Text(text = MaterialTheme.stringResources.start)
         }
         Button(
             onClick = onAbortClick
         ) {
-            Text("Abort")
+            Text(text = MaterialTheme.stringResources.abort)
         }
     }
 }

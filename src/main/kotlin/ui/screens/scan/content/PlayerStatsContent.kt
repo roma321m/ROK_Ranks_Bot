@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import ui.theme.PLAYER_STATS_CHECK_TABLE_WIDTH
 import ui.theme.spacing
+import ui.theme.stringResources
 
 @Composable
 fun PlayerStatsContent(
@@ -105,66 +106,66 @@ fun PlayerStatsCheckTable(
     ) {
         Text(
             modifier = Modifier.padding(MaterialTheme.spacing.small),
-            text = "Select stats to collect",
+            text = MaterialTheme.stringResources.playerStatsContentTitle,
             style = MaterialTheme.typography.h5
         )
         PlayerStatsCheckRow(
-            text = "Gov ID",
+            text = MaterialTheme.stringResources.playerStatsContentId,
             isChecked = isIdChecked,
             onCheckedChange = onIdCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "Name",
+            text = MaterialTheme.stringResources.playerStatsContentName,
             isChecked = isNameChecked,
             onCheckedChange = onNameCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "Power",
+            text = MaterialTheme.stringResources.playerStatsContentPower,
             isChecked = isPowerChecked,
             onCheckedChange = onPowerCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "Dead Troops",
+            text = MaterialTheme.stringResources.playerStatsContentDead,
             isChecked = isDeadTroopsChecked,
             onCheckedChange = onDeadTroopsCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "T1 Kills",
+            text = MaterialTheme.stringResources.playerStatsContentT1,
             isChecked = isT1Checked,
             onCheckedChange = onT1CheckedChange
         )
         PlayerStatsCheckRow(
-            text = "T2 Kills",
+            text = MaterialTheme.stringResources.playerStatsContentT2,
             isChecked = isT2Checked,
             onCheckedChange = onT2CheckedChange
         )
         PlayerStatsCheckRow(
-            text = "T3 Kills",
+            text = MaterialTheme.stringResources.playerStatsContentT3,
             isChecked = isT3Checked,
             onCheckedChange = onT3CheckedChange
         )
         PlayerStatsCheckRow(
-            text = "T4 Kills",
+            text = MaterialTheme.stringResources.playerStatsContentT4,
             isChecked = isT4Checked,
             onCheckedChange = onT4CheckedChange
         )
         PlayerStatsCheckRow(
-            text = "T5 Kills",
+            text = MaterialTheme.stringResources.playerStatsContentT5,
             isChecked = isT5Checked,
             onCheckedChange = onT5CheckedChange
         )
         PlayerStatsCheckRow(
-            text = "RSS Assistants",
+            text = MaterialTheme.stringResources.playerStatsContentRSSA,
             isChecked = isRSSAssistantsChecked,
             onCheckedChange = onRSSAssistantsCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "RSS Gathered",
+            text = MaterialTheme.stringResources.playerStatsContentRSSG,
             isChecked = isRSSGatheredChecked,
             onCheckedChange = onRSSGatheredCheckedChange
         )
         PlayerStatsCheckRow(
-            text = "Alliance Helps",
+            text = MaterialTheme.stringResources.playerStatsContentHelps,
             isChecked = isAllianceHelpsChecked,
             onCheckedChange = onAllianceHelpsCheckedChange
         )
