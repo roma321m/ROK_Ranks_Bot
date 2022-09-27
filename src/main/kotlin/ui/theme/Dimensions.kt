@@ -5,7 +5,4 @@ import androidx.compose.ui.unit.dp
 val WINDOW_HEIGHT = 750.dp
 val WINDOW_WIDTH = 900.dp
 
-val LARGEST_PADDING = 24.dp
-val LARGE_PADDING = 12.dp
-val MEDIUM_PADDING = 8.dp
-val SMALL_PADDING = 6.dp
+val PLAYER_STATS_CHECK_TABLE_WIDTH = 250.dp

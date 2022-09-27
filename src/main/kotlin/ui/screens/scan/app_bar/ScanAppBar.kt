@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ui.theme.SMALL_PADDING
+import ui.theme.spacing
 import ui.theme.topAppBarContentColor
 
 @Composable
@@ -46,7 +46,7 @@ fun PlayerStatsAction(
     onPlayerStatsClicked: () -> Unit,
 ) {
     Button(
-        modifier = Modifier.padding(SMALL_PADDING),
+        modifier = Modifier.padding(MaterialTheme.spacing.small),
         onClick = onPlayerStatsClicked
     ) {
         Text("Player Stats")
@@ -66,7 +66,7 @@ fun KingdomPowerAction(
     onKingdomPowerClicked: () -> Unit,
 ) {
     Button(
-        modifier = Modifier.padding(SMALL_PADDING),
+        modifier = Modifier.padding(MaterialTheme.spacing.small),
         onClick = onKingdomPowerClicked
     ) {
         Text("Kingdom Power")
@@ -78,7 +78,7 @@ fun KingdomKillPointsAction(
     onKingdomKillPointsClicked: () -> Unit,
 ) {
     Button(
-        modifier = Modifier.padding(SMALL_PADDING),
+        modifier = Modifier.padding(MaterialTheme.spacing.small),
         onClick = onKingdomKillPointsClicked
     ) {
         Text("Kingdom Kill Points")

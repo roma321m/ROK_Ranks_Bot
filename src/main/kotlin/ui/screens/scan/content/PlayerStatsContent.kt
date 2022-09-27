@@ -7,7 +7,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import ui.theme.PLAYER_STATS_CHECK_TABLE_WIDTH
+import ui.theme.spacing
 
 @Composable
 fun PlayerStatsContent(
@@ -57,12 +58,12 @@ fun PlayerStatsCheckTable(
 ) {
     Column(
         modifier = Modifier
-            .width(250.dp),
+            .width(PLAYER_STATS_CHECK_TABLE_WIDTH),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Text(
-            modifier = Modifier.padding(5.dp),
+            modifier = Modifier.padding(MaterialTheme.spacing.small),
             text = "Select stats to collect",
             style = MaterialTheme.typography.h5
         )
@@ -137,7 +138,10 @@ fun PlayerStatsCheckRow(
 ) {
     Row(
         modifier = Modifier
-            .padding(start = 12.dp, end = 12.dp)
+            .padding(
+                start = MaterialTheme.spacing.large,
+                end = MaterialTheme.spacing.large
+            )
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
